@@ -696,7 +696,7 @@ export default function Home() {
                 }}
               >
                 {/* Inside Left (Página 1: Análisis de la competencia) */}
-                <div className="panel-side-front w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto">
+                <div className={`panel-side-front w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <div>
                     <div className="mb-6">
                       <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${getGradient("accent")} mb-2`}>
@@ -743,7 +743,7 @@ export default function Home() {
                 </div>
 
                 {/* Outside Solapa (Cara Exterior - Solapa Interna: Análisis del consumidor) */}
-                <div className="panel-side-back w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto bg-black/40">
+                <div className={`panel-side-back w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto bg-black/40 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <div className="flex flex-col h-full justify-between">
                     <div>
                       <div className="mb-6">
@@ -786,7 +786,7 @@ export default function Home() {
                 }}
               >
                 {/* Inside Center (Página 2: Previsión de la demanda) */}
-                <div className="panel-side-front w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto">
+                <div className={`panel-side-front w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <div>
                     <div className="mb-6">
                       <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${getGradient("accent")} mb-2`}>
@@ -837,7 +837,7 @@ export default function Home() {
                 </div>
 
                 {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES UVM & APA REFERENCES) */}
-                <div className="panel-side-back w-full h-full glass-panel p-6 flex flex-col justify-between overflow-y-auto bg-black/25">
+                <div className={`panel-side-back w-full h-full glass-panel p-6 flex flex-col justify-between overflow-y-auto bg-black/25 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <div>
                     <div className="flex justify-center mb-3">
                       <div className={`p-2.5 rounded-full bg-gradient-to-br ${getGradient("primary")} shadow-lg shadow-black/20`}>
@@ -886,7 +886,7 @@ export default function Home() {
                 }}
               >
                 {/* Inside Right (Página 3: El plan de comercialización) */}
-                <div className="panel-side-front w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto">
+                <div className={`panel-side-front w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <div>
                     <div className="mb-6">
                       <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${getGradient("accent")} mb-2`}>
@@ -922,7 +922,7 @@ export default function Home() {
 
                 {/* Outside Portada (Cara Exterior - Portada Principal: Definición del bien a producir) */}
                 <div 
-                  className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative cursor-pointer`}
+                  className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative cursor-pointer transition-opacity duration-500 ${!isOpen || (isOpen && isFlipped) ? "opacity-100" : "opacity-0 pointer-events-none"}`}
                   onClick={() => {
                     if (!isOpen && !isEditing) setIsOpen(true);
                   }}
