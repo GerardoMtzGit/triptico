@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --panel-bg: rgba(255, 255, 255, 0.02);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(56, 189, 248, 0.15);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.theme-emerald {
+  --background: #022c22;
+  --foreground: #f0fdf4;
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(2, 20, 15, 0.6);
+  --glow-color: rgba(52, 211, 153, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.theme-sunset {
+  --background: #180d05;
+  --foreground: #fffaf0;
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(15, 5, 0, 0.7);
+  --glow-color: rgba(251, 146, 60, 0.15);
+}
+
+.theme-light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --panel-bg: rgba(255, 255, 255, 0.85);
+  --panel-border: rgba(15, 23, 42, 0.08);
+  --shadow-color: rgba(15, 23, 42, 0.08);
+  --glow-color: rgba(59, 130, 246, 0.05);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 3D Brochure Styles */
+.brochure-viewport {
+  perspective: 2500px;
+  perspective-origin: center 50%;
+}
+
+.brochure-wrapper {
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Panels */
+.panel-container {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.panel-side-front, .panel-side-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.panel-side-back {
+  transform: rotateY(180deg);
+}
+
+/* Fold origins */
+.panel-left-fold {
+  transform-origin: right center;
+}
+
+.panel-right-fold {
+  transform-origin: left center;
+}
+
+/* Glass panel */
+.glass-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 8px 32px 0 var(--shadow-color), inset 0 1px 0 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: background 0.8s, border-color 0.8s, box-shadow 0.8s;
+}
+
+.theme-light .glass-panel {
+  box-shadow: 0 10px 40px -10px var(--shadow-color), inset 0 1px 0 0 rgba(255,255,255,0.6);
+}
+
+/* Subtly pulse background glow */
+@keyframes slow-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.glow-bg {
+  animation: slow-glow 10s ease-in-out infinite;
+}
+
+/* Shadow details for folding realism */
+.fold-shadow-left {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.45));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s;
+}
+
+.fold-shadow-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,0.45));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s;
+}
+
+.folded .fold-shadow-left,
+.folded .fold-shadow-right {
+  opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--panel-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
