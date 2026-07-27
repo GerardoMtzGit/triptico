@@ -672,7 +672,7 @@ export default function Home() {
           }}
         >
           <div 
-            className={`w-full h-full brochure-wrapper duration-1000 ${isOpen ? "" : "folded"}`}
+            className={`w-full h-full brochure-wrapper duration-1000 ${isOpen ? "" : "folded"} ${isEditing ? "editing-active" : ""}`}
             style={{
               transform: `scale(${scale}) rotateX(${isEditing ? 0 : 15}deg) ${isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"}`,
               transformOrigin: "center center"

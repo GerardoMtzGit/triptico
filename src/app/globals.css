@@ -173,6 +173,16 @@ body {
   background-clip: padding-box;
 }
 
+/* Disable 3D transforms during editing to allow native browser text editing focus */
+.editing-active,
+.editing-active .panel-container,
+.editing-active .panel-side-front,
+.editing-active .panel-side-back {
+  transform: none !important;
+  transform-style: flat !important;
+  backface-visibility: visible !important;
+}
+
 /* Print styles for landscape PDF export */
 @media print {
   @page {
