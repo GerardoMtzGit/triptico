@@ -88,13 +88,13 @@ export default function Home() {
   const [height, setHeight] = useState<number>(550);
   const [isResizing, setIsResizing] = useState(false);
 
-  // Brochure Text Content State (Updated for Gerardo's restructuring)
+  // Brochure Text Content State (Extended with comprehensive explanations and examples)
   const [content, setContent] = useState<BrochureContent>({
     // Cara Exterior - Portada (Derecha) -> Definición del bien a producir
     portadaTag: "Etapa 1 - Estudio de Mercado",
     portadaTitle: "Definición del bien a producir",
-    portadaSubtitle: "Consiste en la delimitación exacta del producto o servicio que se introducirá al mercado, detallando sus características físicas, técnicas, utilidad, patentes y su propuesta de valor única.",
-    portadaEdition: "EJEMPLO: Un software de IA médica que detecta anomalías en radiografías con 99% de precisión, patentado y en empaque digital seguro.",
+    portadaSubtitle: "Consiste en la caracterización exacta, técnica y comercial del producto o servicio que se pretende introducir en el mercado. Esta definición establece el punto de partida del proyecto al clarificar la naturaleza física, funcional y legal del bien, asegurando que cubra una necesidad específica identificada en el mercado.",
+    portadaEdition: "CARACTERÍSTICAS:\n1. Especificaciones Técnicas: Dimensiones, materiales, peso, envase, empaque y vida útil.\n2. Propuesta de Valor y Usos: Identificación del factor diferenciador y beneficios clave.\n3. Normativas y Patentes: Requisitos legales, registros sanitarios y patentes.\n\nEJEMPLO: Un termo inteligente fabricado con acero de grado alimenticio, con pantalla LED de temperatura en tiempo real y patente de aislamiento de doble pared que mantiene bebidas calientes por 12 horas.",
     
     // Cara Exterior - Contraportada (Centro) -> Credenciales UVM
     contraTitle: "Actividad 1. Infografía",
@@ -106,38 +106,38 @@ export default function Home() {
     // Cara Exterior - Solapa Interna (Izquierda) -> Análisis del consumidor
     solapaTag: "Etapa 2",
     solapaTitle: "Análisis del consumidor",
-    solapaDesc: "Investiga quién compra, por qué, con qué frecuencia y cuáles son sus preferencias. Permite segmentar el mercado de forma demográfica, geográfica y psicográfica.",
-    solapaButton: "EJEMPLO: En una app de fitness, los consumidores clave son profesionales de 25 a 45 años con poco tiempo que buscan rutinas en casa sin equipo.",
+    solapaDesc: "Es el estudio sistemático del comportamiento, necesidades, motivaciones, hábitos de compra y niveles de satisfacción del público objetivo. Permite a las empresas orientar sus esfuerzos comerciales hacia los clientes más rentables y ajustar su propuesta de valor a las demandas reales.",
+    solapaButton: "CARACTERÍSTICAS:\n1. Segmentación del Mercado: División del mercado por variables demográficas, geográficas y psicográficas.\n2. Perfil del Consumidor (Buyer Persona): Creación de un arquetipo detallado del cliente ideal y sus necesidades.\n3. Comportamiento y Hábitos de Compra: Análisis del proceso de decisión de compra y frecuencia de adquisición.\n\nEJEMPLO: Para una aplicación de fitness, el consumidor objetivo son profesionales urbanos de 25 a 45 años, con ingresos medios-altos, bajo alto estrés laboral y que prefieren rutinas cortas de 20 minutos en casa sin equipo.",
 
     // Inside Left (Página 1) -> Análisis de la competencia
     insideLeftTag: "Etapa 3",
     insideLeftTitle: "Análisis de la competencia",
-    insideLeftDesc: "Investigación de competidores directos e indirectos en el mercado para evaluar sus fortalezas, debilidades, precios, cuotas de mercado y ventajas competitivas.",
+    insideLeftDesc: "Es la evaluación estructurada de las empresas que ofrecen productos similares (competencia directa) o sustitutos (competencia indirecta) en el mismo mercado geográfico y demográfico. Sirve para identificar sus capacidades, estrategias, fortalezas y debilidades.",
     insideLeftBullet1Title: "Características Clave:",
-    insideLeftBullet1Desc: "Permite realizar un Benchmarking de atributos del producto propio con el de los rivales, entender sus canales de venta y sus barreras de entrada (como patentes o contratos de exclusividad).",
+    insideLeftBullet1Desc: "1. Benchmarking de Atributos: Comparación de características, calidad, servicio al cliente y canales.\n2. Estrategia de Precios: Análisis de sus esquemas de descuento, políticas de crédito y márgenes de ganancia.\n3. Barreras de Entrada: Evaluación de patentes, de economías de escala y lealtad a la marca ya establecida.",
     insideLeftBullet2Title: "Ejemplo Práctico:",
-    insideLeftBullet2Desc: "Una cafetería local analiza a Starbucks (directo), identificando que su fuerte es la conveniencia y estatus, pero su debilidad es la falta de café artesanal de origen único, que será el nicho del nuevo local.",
+    insideLeftBullet2Desc: "Una nueva cafetería artesanal analiza a Starbucks (competencia directa), reconociendo su fortaleza en conveniencia y estatus de marca, pero su debilidad en café industrial estandarizado. La cafetería local decide diferenciarse ofreciendo café de origen único de especialidad con tostado local.",
 
     // Inside Center (Página 2) -> Previsión de la demanda
     insideCenterTag: "Etapa 4",
     insideCenterTitle: "Previsión de la demanda",
-    insideCenterDesc: "Estimación cuantitativa y cualitativa de las ventas futuras del bien o servicio durante un período determinado.",
-    insideCenterStat1Label: "Métodos Cualitativos: Delphi, encuestas de intención de compra y entrevistas con expertos de la industria.",
-    insideCenterStat2Label: "Métodos Cuantitativos: Modelos de series temporales y regresión basados en históricos y tendencias macro.",
-    insideCenterStat3Label: "EJEMPLO: Una fábrica de abrigos proyecta un alza del 40% en ventas cruzando datos de clima e intención de compra en otoño.",
+    insideCenterDesc: "Consiste en estimar científicamente la cantidad futura de un bien o servicio que los consumidores estarán dispuestos a adquirir en un periodo determinado y bajo condiciones de mercado específicas, permitiendo planificar la producción y flujos financieros.",
+    insideCenterStat1Label: "Métodos Cualitativos: Encuestas de intención de compra del consumidor, opinión de la fuerza de ventas y el Método Delphi.",
+    insideCenterStat2Label: "Métodos Cuantitativos: Modelos de series de tiempo (promedios móviles, suavizamiento) y modelos causales de regresión lineal.",
+    insideCenterStat3Label: "EJEMPLO: Una fábrica de abrigos proyecta un alza del 40% en ventas cruzando datos de temperatura invernal pronosticada e intención de compra en otoño, optimizando así la compra de lanas y turnos de costura.",
 
     // Inside Right (Página 3) -> El plan de comercialización
     insideRightTag: "Etapa 5",
     insideRightTitle: "El plan de comercialización",
-    insideRightDesc: "Define el conjunto de estrategias y acciones planificadas bajo el Marketing Mix (4Ps) para colocar y vender el producto de forma eficiente.",
-    insideRightQuote: "Las 4Ps: Producto (valor diferenciador), Precio (estrategia de costos), Plaza (canales físicos o digitales) y Promoción (publicidad digital y relaciones públicas).",
-    insideRightQuoteAuthor: "EJEMPLO: Lanzar un software contable en la nube (Plaza), con suscripción mensual (Precio), campaña en LinkedIn (Promoción) y soporte técnico 24/7 (Producto).",
+    insideRightDesc: "Es el conjunto de estrategias, canales y acciones comerciales dirigidas a colocar el bien o servicio en manos del consumidor final en las condiciones óptimas, al precio correcto y con la comunicación adecuada para maximizar ventas.",
+    insideRightQuote: "El Marketing Mix (Las 4Ps): Producto (marca, diseño, postventa), Precio (descuentos, costos), Plaza (canales físicos o e-commerce directo) y Promoción (publicidad digital, redes sociales, relaciones públicas).",
+    insideRightQuoteAuthor: "EJEMPLO: Para un software SaaS contable, el plan integra una aplicación en la nube (Producto), con suscripción mensual escalable (Precio), distribución directa vía descarga web (Plaza) y una campaña en LinkedIn junto con pruebas gratuitas de 14 días (Promoción).",
   });
 
   // Default font sizes map (key -> size in pixels)
   const [fontSizes, setFontSizes] = useState<Record<string, number>>({});
 
-  // Pre-populated custom blocks (APA References)
+  // Pre-populated custom blocks (Updated to only show the two requested references)
   const [customBlocks, setCustomBlocks] = useState<Record<string, CustomBlock[]>>({
     insideLeft: [],
     insideCenter: [],
@@ -148,37 +148,19 @@ export default function Home() {
         id: "ref_header",
         type: "heading",
         text: "Referencias Bibliográficas (APA):",
-        fontSize: 13
+        fontSize: 12
       },
       {
         id: "ref1",
         type: "paragraph",
-        text: "• Baca Urbina, G. (2016). Evaluación de proyectos (8va ed.). McGraw-Hill Education.",
-        fontSize: 10
+        text: "Meza, J. (2013). Evaluación financiera de proyectos: 10 casos prácticos resueltos en Excel. [Archivo PDF]. Recuperado de http://190.57.147.202:90/jspui/bitstream/123456789/1402/1/Evaluaci%C3%B3n%20financiera%20de%20proyectos.pdf",
+        fontSize: 9
       },
       {
         id: "ref2",
         type: "paragraph",
-        text: "• Kotler, P., & Keller, K. L. (2016). Dirección de marketing (15va ed.). Pearson Educación.",
-        fontSize: 10
-      },
-      {
-        id: "ref3",
-        type: "paragraph",
-        text: "• Malhotra, N. K. (2020). Investigación de mercados: Conceptos esenciales (6ta ed.). Pearson.",
-        fontSize: 10
-      },
-      {
-        id: "ref4",
-        type: "paragraph",
-        text: "• Nassir Sapag, C., & Sapag Chain, R. (2014). Preparación y evaluación de proyectos (6ta ed.). McGraw-Hill.",
-        fontSize: 10
-      },
-      {
-        id: "ref5",
-        type: "paragraph",
-        text: "• Porter, M. E. (2015). Ventaja competitiva: Creación y sostenimiento de un desempeño superior (2da ed.). Patria.",
-        fontSize: 10
+        text: "Mondragon, D. (2017). Formulación y evaluación de proyectos. [Archivo PDF]. Recuperado de https://digitk.areandina.edu.co/bitstream/handle/areandina/1318/Formulaci%C3%B3n%20y%20Evaluaci%C3%B3n%20de%20Proyectos.pdf?sequence=1",
+        fontSize: 9
       }
     ],
     portada: [],
@@ -447,7 +429,7 @@ export default function Home() {
                     onBlur={(e) => updateCustomBlockText(panelKey, block.id, e.currentTarget.textContent || "")}
                     style={{ fontSize: `${block.fontSize || 14}px` }}
                     className={`${
-                      block.type === "heading" ? "text-lg font-bold" : "text-sm text-foreground/70"
+                      block.type === "heading" ? "text-sm font-bold text-cyan-400 mb-1" : "text-[11px] text-foreground/75 leading-relaxed"
                     } ${
                       isEditing 
                         ? "outline-dashed outline-2 outline-cyan-500/70 px-1.5 py-0.5 rounded bg-white/5 dark:bg-black/20 cursor-text hover:bg-white/10" 
@@ -711,7 +693,7 @@ export default function Home() {
                     </svg>
 
                     <EditableField contentKey="insideLeftTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
-                    <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
+                    <EditableField contentKey="insideLeftDesc" element="p" className="text-xs text-foreground/70 leading-relaxed mb-6" defaultSize={12} />
                     
                     <div className="space-y-4">
                       <div className="flex gap-3 items-start">
@@ -720,7 +702,7 @@ export default function Home() {
                         </div>
                         <div className="w-full">
                           <EditableField contentKey="insideLeftBullet1Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
-                          <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-xs text-foreground/60" defaultSize={12} />
+                          <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed" defaultSize={11} />
                         </div>
                       </div>
                       <div className="flex gap-3 items-start">
@@ -729,7 +711,7 @@ export default function Home() {
                         </div>
                         <div className="w-full">
                           <EditableField contentKey="insideLeftBullet2Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
-                          <EditableField contentKey="insideLeftBullet2Desc" element="p" className="text-xs text-foreground/60" defaultSize={12} />
+                          <EditableField contentKey="insideLeftBullet2Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed" defaultSize={11} />
                         </div>
                       </div>
                     </div>
@@ -759,8 +741,8 @@ export default function Home() {
                       </svg>
 
                       <EditableField contentKey="solapaTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
-                      <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
-                      <EditableField contentKey="solapaButton" element="p" className="text-xs text-foreground/60 italic leading-relaxed border-l-2 border-purple-500/50 pl-3 mt-4" defaultSize={12} />
+                      <EditableField contentKey="solapaDesc" element="p" className="text-[11px] text-foreground/70 leading-relaxed mb-6" defaultSize={11} />
+                      <EditableField contentKey="solapaButton" element="p" className="text-[11px] text-foreground/60 italic leading-relaxed border-l-2 border-purple-500/50 pl-3 mt-4 whitespace-pre-line" defaultSize={11} />
 
                       {/* Custom added blocks */}
                       {renderCustomBlocks("solapa")}
@@ -801,12 +783,12 @@ export default function Home() {
                     </svg>
 
                     <EditableField contentKey="insideCenterTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
-                    <EditableField contentKey="insideCenterDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
+                    <EditableField contentKey="insideCenterDesc" element="p" className="text-[11px] text-foreground/70 leading-relaxed mb-6" defaultSize={11} />
 
                     {/* Stats / Characteristics */}
                     <div className="space-y-4">
                       <div>
-                        <div className="flex justify-between text-xs mb-1 w-full text-inherit">
+                        <div className="flex justify-between text-[11px] mb-1.5 w-full text-inherit leading-relaxed">
                           <EditableField contentKey="insideCenterStat1Label" element="span" defaultSize={11} />
                         </div>
                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
@@ -814,7 +796,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-xs mb-1 w-full text-inherit">
+                        <div className="flex justify-between text-[11px] mb-1.5 w-full text-inherit leading-relaxed">
                           <EditableField contentKey="insideCenterStat2Label" element="span" defaultSize={11} />
                         </div>
                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
@@ -822,7 +804,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
+                        <div className="flex justify-between text-[11px] font-semibold mb-1 w-full text-inherit leading-relaxed">
                           <EditableField contentKey="insideCenterStat3Label" element="span" defaultSize={11} className="italic text-cyan-400" />
                         </div>
                       </div>
@@ -865,7 +847,7 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {/* Custom blocks list (Used for APA References) */}
+                    {/* Custom blocks list (APA References block - displays ONLY Meza & Mondragón) */}
                     {renderCustomBlocks("contra")}
                   </div>
 
@@ -901,11 +883,11 @@ export default function Home() {
                     </svg>
 
                     <EditableField contentKey="insideRightTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
-                    <EditableField contentKey="insideRightDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
+                    <EditableField contentKey="insideRightDesc" element="p" className="text-[11px] text-foreground/70 leading-relaxed mb-6" defaultSize={11} />
 
                     {/* Marketing Mix Box */}
                     <div className="p-4 rounded-2xl bg-white/5 border border-white/5 relative mb-2">
-                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs font-medium text-foreground/85 leading-relaxed mb-3" defaultSize={12} />
+                      <EditableField contentKey="insideRightQuote" element="p" className="text-[11px] font-medium text-foreground/85 leading-relaxed mb-3" defaultSize={11} />
                       <div className="text-right">
                         <EditableField contentKey="insideRightQuoteAuthor" element="span" className="text-[10px] font-bold tracking-wider text-cyan-400 italic" defaultSize={10} />
                       </div>
@@ -947,7 +929,7 @@ export default function Home() {
                       <EditableField contentKey="portadaTitle" element="h2" className="text-3xl font-extrabold tracking-tight leading-tight mb-3" defaultSize={26} />
                       <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full mx-auto"></div>
                       <EditableField contentKey="portadaSubtitle" element="p" className="text-xs text-foreground/60 leading-relaxed mb-4" defaultSize={12} />
-                      <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic border-t border-white/5 pt-3" defaultSize={11} />
+                      <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic border-t border-white/5 pt-3 whitespace-pre-line text-left leading-relaxed" defaultSize={11} />
                       
                       {/* Custom added blocks */}
                       {renderCustomBlocks("portada")}
@@ -1030,10 +1012,10 @@ export default function Home() {
                       <EditableField contentKey="insideLeftTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideLeftTitle" element="h3" className="text-xl font-bold tracking-tight mb-2" defaultSize={20} />
-                    <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-4" defaultSize={14} />
+                    <EditableField contentKey="insideLeftDesc" element="p" className="text-xs text-foreground/70 leading-relaxed mb-4" defaultSize={12} />
                     <div className="space-y-2">
                       <EditableField contentKey="insideLeftBullet1Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
-                      <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-xs text-foreground/60" defaultSize={12} />
+                      <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed" defaultSize={11} />
                     </div>
                     
                     {/* Custom Blocks */}
@@ -1049,10 +1031,10 @@ export default function Home() {
                       <EditableField contentKey="insideCenterTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideCenterTitle" element="h3" className="text-xl font-bold tracking-tight mb-4" defaultSize={20} />
-                    <EditableField contentKey="insideCenterDesc" element="p" className="text-sm text-foreground/70 mb-4" defaultSize={13} />
+                    <EditableField contentKey="insideCenterDesc" element="p" className="text-xs text-foreground/70 mb-4 leading-relaxed" defaultSize={11} />
                     <div className="space-y-2">
-                      <EditableField contentKey="insideCenterStat1Label" element="div" className="text-xs text-foreground/80" defaultSize={12} />
-                      <EditableField contentKey="insideCenterStat2Label" element="div" className="text-xs text-foreground/80" defaultSize={12} />
+                      <EditableField contentKey="insideCenterStat1Label" element="div" className="text-[11px] text-foreground/80 leading-relaxed" defaultSize={11} />
+                      <EditableField contentKey="insideCenterStat2Label" element="div" className="text-[11px] text-foreground/80 leading-relaxed" defaultSize={11} />
                     </div>
 
                     {/* Custom Blocks */}
@@ -1068,9 +1050,9 @@ export default function Home() {
                       <EditableField contentKey="insideRightTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideRightTitle" element="h3" className="text-xl font-bold tracking-tight mb-2" defaultSize={20} />
-                    <EditableField contentKey="insideRightDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-4" defaultSize={14} />
+                    <EditableField contentKey="insideRightDesc" element="p" className="text-xs text-foreground/70 leading-relaxed mb-4" defaultSize={11} />
                     <div className="p-4 rounded-xl bg-white/5 border border-white/5 mb-3">
-                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs italic text-foreground/80" defaultSize={12} />
+                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs italic text-foreground/85 leading-relaxed" defaultSize={11} />
                     </div>
 
                     {/* Custom Blocks */}
@@ -1086,11 +1068,11 @@ export default function Home() {
                   <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${getGradient("primary")} opacity-30 blur-2xl pointer-events-none`}></div>
                   <div className="flex justify-between items-center">
                     <EditableField contentKey="portadaTag" element="span" className="text-xs font-bold tracking-wider uppercase opacity-85" defaultSize={12} />
-                    <EditableField contentKey="portadaEdition" element="span" className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10" defaultSize={10} />
                   </div>
                   <div className="my-auto py-6">
                     <EditableField contentKey="portadaTitle" element="h2" className="text-2xl font-extrabold tracking-tight leading-tight mb-2" defaultSize={26} />
                     <EditableField contentKey="portadaSubtitle" element="p" className="text-xs text-foreground/60 leading-relaxed" defaultSize={12} />
+                    <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic mt-2 whitespace-pre-line" defaultSize={11} />
                     
                     {/* Custom Blocks */}
                     {renderCustomBlocks("portada")}
@@ -1130,6 +1112,7 @@ export default function Home() {
                     <EditableField contentKey="solapaTag" element="span" className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10 float-right" defaultSize={10} />
                     <EditableField contentKey="solapaTitle" element="h3" className="text-lg font-bold tracking-tight mb-2" defaultSize={18} />
                     <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-4" defaultSize={14} />
+                    <EditableField contentKey="solapaButton" element="p" className="text-xs text-foreground/60 italic leading-relaxed mt-2 whitespace-pre-line" defaultSize={12} />
 
                     {/* Custom Blocks */}
                     {renderCustomBlocks("solapa")}
