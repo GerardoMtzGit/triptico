@@ -303,7 +303,7 @@ export default function Home() {
           style={{ fontSize: `${fontSize}px` }}
           className={`${className} ${
             isEditing 
-              ? "outline-dashed outline-2 outline-cyan-500/70 px-1.5 py-0.5 rounded bg-white/5 dark:bg-black/20 cursor-text hover:bg-white/10" 
+              ? "outline-dashed outline-2 outline-cyan-500/70 px-1.5 py-0.5 rounded bg-white/5 dark:bg-black/20 cursor-text hover:bg-white/10 select-text pointer-events-auto relative z-30" 
               : "transition-all duration-300"
           }`}
         >
@@ -432,7 +432,7 @@ export default function Home() {
                       block.type === "heading" ? "text-sm font-bold text-cyan-400 mb-1" : "text-[11px] text-foreground/75 leading-relaxed"
                     } ${
                       isEditing 
-                        ? "outline-dashed outline-2 outline-cyan-500/70 px-1.5 py-0.5 rounded bg-white/5 dark:bg-black/20 cursor-text hover:bg-white/10" 
+                        ? "outline-dashed outline-2 outline-cyan-500/70 px-1.5 py-0.5 rounded bg-white/5 dark:bg-black/20 cursor-text hover:bg-white/10 select-text pointer-events-auto relative z-30" 
                         : ""
                     }`}
                   >
@@ -530,7 +530,7 @@ export default function Home() {
     <div className={`min-h-screen w-full flex flex-col justify-between overflow-x-hidden bg-gradient-to-b ${getGradient("bg")} ${getThemeClass()} p-4 md:p-8 font-sans transition-all duration-1000 relative`}>
       
       {/* Background glow elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 print:hidden">
         <div className="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] rounded-full bg-gradient-to-tr from-blue-600/10 to-indigo-500/5 blur-[120px] glow-bg"></div>
         <div className="absolute bottom-1/4 right-1/4 w-[35vw] h-[35vw] rounded-full bg-gradient-to-bl from-purple-600/10 to-pink-500/5 blur-[140px] glow-bg" style={{ animationDelay: "-3s" }}></div>
       </div>
@@ -663,15 +663,18 @@ export default function Home() {
           </p>
         </div>
 
-        {/* DESKTOP 3D BROCHURE VIEW */}
+        {/* DESKTOP 3D BROCHURE VIEW (Perspective and rotateX are set to 0 when editing to enable perfect contentEditable focus) */}
         <div 
           className="hidden lg:block w-full max-w-[90vw] brochure-viewport relative transition-all duration-150"
-          style={{ height: `${height}px` }}
+          style={{ 
+            height: `${height}px`,
+            perspective: isEditing ? "none" : "2500px"
+          }}
         >
           <div 
             className={`w-full h-full brochure-wrapper duration-1000 ${isOpen ? "" : "folded"}`}
             style={{
-              transform: `scale(${scale}) rotateX(15deg) ${isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"}`,
+              transform: `scale(${scale}) rotateX(${isEditing ? 0 : 15}deg) ${isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"}`,
               transformOrigin: "center center"
             }}
           >
