@@ -27,26 +27,26 @@ import {
 type Theme = "cyber" | "emerald" | "sunset" | "light";
 
 interface BrochureContent {
-  // Portada (Outside Right)
+  // Portada (Outside Right) -> Definición del bien a producir
   portadaTitle: string;
   portadaSubtitle: string;
   portadaTag: string;
   portadaEdition: string;
   
-  // Contraportada (Outside Center)
+  // Contraportada (Outside Center) -> Credenciales UVM
   contraTitle: string;
   contraEmail: string; // Used for Student Name
   contraPhone: string; // Used for Program Name
   contraAddress: string; // Used for University Name
   contraQRLabel: string; // Used for Course Name
   
-  // Solapa (Outside Left)
+  // Solapa (Outside Left) -> Análisis del consumidor
   solapaTag: string;
   solapaTitle: string;
   solapaDesc: string;
   solapaButton: string;
 
-  // Inside Left
+  // Inside Left (Pag 1) -> Análisis de la competencia
   insideLeftTag: string;
   insideLeftTitle: string;
   insideLeftDesc: string;
@@ -55,7 +55,7 @@ interface BrochureContent {
   insideLeftBullet2Title: string;
   insideLeftBullet2Desc: string;
 
-  // Inside Center
+  // Inside Center (Pag 2) -> Previsión de la demanda
   insideCenterTag: string;
   insideCenterTitle: string;
   insideCenterDesc: string;
@@ -63,7 +63,7 @@ interface BrochureContent {
   insideCenterStat2Label: string;
   insideCenterStat3Label: string;
 
-  // Inside Right
+  // Inside Right (Pag 3) -> El plan de comercialización
   insideRightTag: string;
   insideRightTitle: string;
   insideRightDesc: string;
@@ -88,87 +88,99 @@ export default function Home() {
   const [height, setHeight] = useState<number>(550);
   const [isResizing, setIsResizing] = useState(false);
 
-  // Brochure Text Content State (Populated for Gerardo's homework)
+  // Brochure Text Content State (Updated for Gerardo's restructuring)
   const [content, setContent] = useState<BrochureContent>({
-    portadaTitle: "ESTUDIO DE MERCADO",
-    portadaSubtitle: "Conceptos principales y metodologías para el análisis y evaluación financiera de proyectos de inversión.",
-    portadaTag: "UVM - MAESTRÍA IA",
-    portadaEdition: "ACTIVIDAD 1",
+    // Cara Exterior - Portada (Derecha) -> Definición del bien a producir
+    portadaTag: "Etapa 1 - Estudio de Mercado",
+    portadaTitle: "Definición del bien a producir",
+    portadaSubtitle: "Consiste en la delimitación exacta del producto o servicio que se introducirá al mercado, detallando sus características físicas, técnicas, utilidad, patentes y su propuesta de valor única.",
+    portadaEdition: "EJEMPLO: Un software de IA médica que detecta anomalías en radiografías con 99% de precisión, patentado y en empaque digital seguro.",
     
+    // Cara Exterior - Contraportada (Centro) -> Credenciales UVM
     contraTitle: "Actividad 1. Infografía",
     contraEmail: "Gerardo Antonio Martínez García",
     contraPhone: "Maestría en Inteligencia Artificial",
     contraAddress: "Universidad del Valle de México (UVM)",
     contraQRLabel: "Evaluación financiera y análisis de costos y riesgos",
     
-    solapaTag: "Bibliografía",
-    solapaTitle: "Referencias APA",
-    solapaDesc: "Listado de fuentes empleadas en el desarrollo de este estudio de mercado:",
-    solapaButton: "Saber más",
+    // Cara Exterior - Solapa Interna (Izquierda) -> Análisis del consumidor
+    solapaTag: "Etapa 2",
+    solapaTitle: "Análisis del consumidor",
+    solapaDesc: "Investiga quién compra, por qué, con qué frecuencia y cuáles son sus preferencias. Permite segmentar el mercado de forma demográfica, geográfica y psicográfica.",
+    solapaButton: "EJEMPLO: En una app de fitness, los consumidores clave son profesionales de 25 a 45 años con poco tiempo que buscan rutinas en casa sin equipo.",
 
-    insideLeftTag: "Fase 1",
-    insideLeftTitle: "Definición del Bien y Análisis del Consumidor",
-    insideLeftDesc: "El punto de partida de todo estudio de mercado es la delimitación del producto o servicio y la comprensión del público objetivo.",
-    insideLeftBullet1Title: "1. Definición del bien a producir",
-    insideLeftBullet1Desc: "Consiste en la descripción exacta del producto o servicio: especificaciones técnicas, utilidad, empaque, patentes y el valor diferenciador que resolverá la necesidad identificada.",
-    insideLeftBullet2Title: "2. Análisis del consumidor",
-    insideLeftBullet2Desc: "Investiga quién compra, por qué, con qué frecuencia y cuáles son sus preferencias. Permite segmentar el mercado de forma demográfica, geográfica y conductual.",
+    // Inside Left (Página 1) -> Análisis de la competencia
+    insideLeftTag: "Etapa 3",
+    insideLeftTitle: "Análisis de la competencia",
+    insideLeftDesc: "Investigación de competidores directos e indirectos en el mercado para evaluar sus fortalezas, debilidades, precios, cuotas de mercado y ventajas competitivas.",
+    insideLeftBullet1Title: "Características Clave:",
+    insideLeftBullet1Desc: "Permite realizar un Benchmarking de atributos del producto propio con el de los rivales, entender sus canales de venta y sus barreras de entrada (como patentes o contratos de exclusividad).",
+    insideLeftBullet2Title: "Ejemplo Práctico:",
+    insideLeftBullet2Desc: "Una cafetería local analiza a Starbucks (directo), identificando que su fuerte es la conveniencia y estatus, pero su debilidad es la falta de café artesanal de origen único, que será el nicho del nuevo local.",
 
-    insideCenterTag: "Fase 2",
-    insideCenterTitle: "Competencia y Previsión de la Demanda",
-    insideCenterDesc: "Evaluación del entorno competitivo y estimación del comportamiento futuro de las ventas del proyecto.",
-    insideCenterStat1Label: "3. Análisis de la competencia: Identificación de competidores, cuota de mercado, fortalezas, debilidades, precios y canales de distribución.",
-    insideCenterStat2Label: "4. Previsión de la demanda: Estimación de ventas futuras usando datos históricos, métodos cualitativos (expertos) y cuantitativos.",
-    insideCenterStat3Label: "Eficiencia y Viabilidad Comercial del Proyecto en el Mercado",
+    // Inside Center (Página 2) -> Previsión de la demanda
+    insideCenterTag: "Etapa 4",
+    insideCenterTitle: "Previsión de la demanda",
+    insideCenterDesc: "Estimación cuantitativa y cualitativa de las ventas futuras del bien o servicio durante un período determinado.",
+    insideCenterStat1Label: "Métodos Cualitativos: Delphi, encuestas de intención de compra y entrevistas con expertos de la industria.",
+    insideCenterStat2Label: "Métodos Cuantitativos: Modelos de series temporales y regresión basados en históricos y tendencias macro.",
+    insideCenterStat3Label: "EJEMPLO: Una fábrica de abrigos proyecta un alza del 40% en ventas cruzando datos de clima e intención de compra en otoño.",
 
-    insideRightTag: "Fase 3",
-    insideRightTitle: "El Plan de Comercialización",
-    insideRightDesc: "Estrategias de colocación e inserción del producto.",
-    insideRightQuote: "Las 4Ps (Producto, Precio, Plaza y Promoción) definen el Plan de Comercialización. Determinan cómo el bien llegará al consumidor final y cómo se comunicará la propuesta de valor para asegurar el éxito del proyecto.",
-    insideRightQuoteAuthor: "Estrategia del Marketing Mix",
+    // Inside Right (Página 3) -> El plan de comercialización
+    insideRightTag: "Etapa 5",
+    insideRightTitle: "El plan de comercialización",
+    insideRightDesc: "Define el conjunto de estrategias y acciones planificadas bajo el Marketing Mix (4Ps) para colocar y vender el producto de forma eficiente.",
+    insideRightQuote: "Las 4Ps: Producto (valor diferenciador), Precio (estrategia de costos), Plaza (canales físicos o digitales) y Promoción (publicidad digital y relaciones públicas).",
+    insideRightQuoteAuthor: "EJEMPLO: Lanzar un software contable en la nube (Plaza), con suscripción mensual (Precio), campaña en LinkedIn (Promoción) y soporte técnico 24/7 (Producto).",
   });
 
   // Default font sizes map (key -> size in pixels)
   const [fontSizes, setFontSizes] = useState<Record<string, number>>({});
 
-  // Pre-populated custom blocks (references for Gerardo's homework)
+  // Pre-populated custom blocks (APA References)
   const [customBlocks, setCustomBlocks] = useState<Record<string, CustomBlock[]>>({
     insideLeft: [],
     insideCenter: [],
     insideRight: [],
-    solapa: [
+    solapa: [],
+    contra: [
+      {
+        id: "ref_header",
+        type: "heading",
+        text: "Referencias Bibliográficas (APA):",
+        fontSize: 13
+      },
       {
         id: "ref1",
         type: "paragraph",
-        text: "Baca Urbina, G. (2016). Evaluación de proyectos (8va ed.). McGraw-Hill Education.",
-        fontSize: 12
+        text: "• Baca Urbina, G. (2016). Evaluación de proyectos (8va ed.). McGraw-Hill Education.",
+        fontSize: 10
       },
       {
         id: "ref2",
         type: "paragraph",
-        text: "Kotler, P., & Keller, K. L. (2016). Dirección de marketing (15va ed.). Pearson Educación.",
-        fontSize: 12
+        text: "• Kotler, P., & Keller, K. L. (2016). Dirección de marketing (15va ed.). Pearson Educación.",
+        fontSize: 10
       },
       {
         id: "ref3",
         type: "paragraph",
-        text: "Malhotra, N. K. (2020). Investigación de mercados: Conceptos esenciales (6ta ed.). Pearson.",
-        fontSize: 12
+        text: "• Malhotra, N. K. (2020). Investigación de mercados: Conceptos esenciales (6ta ed.). Pearson.",
+        fontSize: 10
       },
       {
         id: "ref4",
         type: "paragraph",
-        text: "Nassir Sapag, C., & Sapag Chain, R. (2014). Preparación y evaluación de proyectos (6ta ed.). McGraw-Hill.",
-        fontSize: 12
+        text: "• Nassir Sapag, C., & Sapag Chain, R. (2014). Preparación y evaluación de proyectos (6ta ed.). McGraw-Hill.",
+        fontSize: 10
       },
       {
         id: "ref5",
         type: "paragraph",
-        text: "Porter, M. E. (2015). Ventaja competitiva: Creación y sostenimiento de un desempeño superior (2da ed.). Patria.",
-        fontSize: 12
+        text: "• Porter, M. E. (2015). Ventaja competitiva: Creación y sostenimiento de un desempeño superior (2da ed.). Patria.",
+        fontSize: 10
       }
     ],
-    contra: [],
     portada: [],
   });
 
@@ -674,7 +686,7 @@ export default function Home() {
             {/* 3D BROCHURE GRID */}
             <div className="w-full h-full grid grid-cols-3 relative" style={{ transformStyle: "preserve-3d" }}>
               
-              {/* PANEL 1: LEFT PANEL (Inside Left / Outside Solapa) */}
+              {/* PANEL 1: LEFT PANEL (Inside Left [Pág 1] / Outside Solapa) */}
               <div 
                 className={`panel-container panel-left-fold w-full h-full absolute top-0 left-0`}
                 style={{
@@ -683,7 +695,7 @@ export default function Home() {
                   zIndex: isOpen ? 10 : 30
                 }}
               >
-                {/* Inside Left (Cara Interior - Izquierda) */}
+                {/* Inside Left (Página 1: Análisis de la competencia) */}
                 <div className="panel-side-front w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto">
                   <div>
                     <div className="mb-6">
@@ -692,12 +704,18 @@ export default function Home() {
                         <EditableField contentKey="insideLeftTag" element="span" defaultSize={12} />
                       </div>
                     </div>
-                    <EditableField contentKey="insideLeftTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+                    
+                    {/* SVG Illustration: Competencia */}
+                    <svg className="w-16 h-16 text-amber-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                    </svg>
+
+                    <EditableField contentKey="insideLeftTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                     <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
                     
                     <div className="space-y-4">
                       <div className="flex gap-3 items-start">
-                        <div className="mt-1 p-1 rounded bg-white/5 border border-white/10 text-emerald-500">
+                        <div className="mt-1 p-1 rounded bg-white/5 border border-white/10 text-amber-500">
                           <CheckCircle2 className="w-4 h-4" />
                         </div>
                         <div className="w-full">
@@ -706,7 +724,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="flex gap-3 items-start">
-                        <div className="mt-1 p-1 rounded bg-white/5 border border-white/10 text-emerald-500">
+                        <div className="mt-1 p-1 rounded bg-white/5 border border-white/10 text-amber-500">
                           <CheckCircle2 className="w-4 h-4" />
                         </div>
                         <div className="w-full">
@@ -724,7 +742,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Outside Solapa (Cara Exterior - Flap Interno) */}
+                {/* Outside Solapa (Cara Exterior - Solapa Interna: Análisis del consumidor) */}
                 <div className="panel-side-back w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto bg-black/40">
                   <div className="flex flex-col h-full justify-between">
                     <div>
@@ -734,8 +752,15 @@ export default function Home() {
                           <EditableField contentKey="solapaTag" element="span" defaultSize={12} />
                         </div>
                       </div>
-                      <EditableField contentKey="solapaTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+
+                      {/* SVG Illustration: Consumidor */}
+                      <svg className="w-16 h-16 text-purple-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                      </svg>
+
+                      <EditableField contentKey="solapaTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                       <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
+                      <EditableField contentKey="solapaButton" element="p" className="text-xs text-foreground/60 italic leading-relaxed border-l-2 border-purple-500/50 pl-3 mt-4" defaultSize={12} />
 
                       {/* Custom added blocks */}
                       {renderCustomBlocks("solapa")}
@@ -752,7 +777,7 @@ export default function Home() {
                 <div className="fold-shadow-left"></div>
               </div>
 
-              {/* PANEL 2: CENTER PANEL (Inside Center / Outside Contraportada) */}
+              {/* PANEL 2: CENTER PANEL (Inside Center [Pág 2] / Outside Contraportada) */}
               <div 
                 className="panel-container w-full h-full absolute top-0 left-[33.333333%]"
                 style={{
@@ -760,7 +785,7 @@ export default function Home() {
                   zIndex: 20
                 }}
               >
-                {/* Inside Center (Cara Interior - Centro) */}
+                {/* Inside Center (Página 2: Previsión de la demanda) */}
                 <div className="panel-side-front w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto">
                   <div>
                     <div className="mb-6">
@@ -769,33 +794,36 @@ export default function Home() {
                         <EditableField contentKey="insideCenterTag" element="span" defaultSize={12} />
                       </div>
                     </div>
-                    <EditableField contentKey="insideCenterTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+
+                    {/* SVG Illustration: Demanda */}
+                    <svg className="w-16 h-16 text-emerald-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.281m5.94 2.28-2.28 5.941" />
+                    </svg>
+
+                    <EditableField contentKey="insideCenterTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                     <EditableField contentKey="insideCenterDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
 
-                    {/* Stats labels */}
+                    {/* Stats / Characteristics */}
                     <div className="space-y-4">
                       <div>
-                        <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
-                          <EditableField contentKey="insideCenterStat1Label" element="span" defaultSize={12} />
+                        <div className="flex justify-between text-xs mb-1 w-full text-inherit">
+                          <EditableField contentKey="insideCenterStat1Label" element="span" defaultSize={11} />
                         </div>
-                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                           <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "95%" }}></div>
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
-                          <EditableField contentKey="insideCenterStat2Label" element="span" defaultSize={12} />
+                        <div className="flex justify-between text-xs mb-1 w-full text-inherit">
+                          <EditableField contentKey="insideCenterStat2Label" element="span" defaultSize={11} />
                         </div>
-                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                           <div className={`h-full bg-gradient-to-r ${getGradient("secondary")} rounded-full`} style={{ width: "90%" }}></div>
                         </div>
                       </div>
                       <div>
                         <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
-                          <EditableField contentKey="insideCenterStat3Label" element="span" defaultSize={12} />
-                        </div>
-                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "99%" }}></div>
+                          <EditableField contentKey="insideCenterStat3Label" element="span" defaultSize={11} className="italic text-cyan-400" />
                         </div>
                       </div>
                     </div>
@@ -808,47 +836,47 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES ACADÉMICAS) */}
-                <div className="panel-side-back w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto bg-black/20">
-                  <div className="my-auto">
-                    <div className="flex justify-center mb-6">
-                      <div className={`p-4 rounded-full bg-gradient-to-br ${getGradient("primary")} shadow-lg shadow-black/20`}>
-                        <GraduationCap className="w-12 h-12 text-white" />
+                {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES UVM & APA REFERENCES) */}
+                <div className="panel-side-back w-full h-full glass-panel p-6 flex flex-col justify-between overflow-y-auto bg-black/25">
+                  <div>
+                    <div className="flex justify-center mb-3">
+                      <div className={`p-2.5 rounded-full bg-gradient-to-br ${getGradient("primary")} shadow-lg shadow-black/20`}>
+                        <GraduationCap className="w-8 h-8 text-white" />
                       </div>
                     </div>
 
-                    <EditableField contentKey="contraTitle" element="h3" className="text-2xl font-extrabold tracking-tight text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500" defaultSize={22} />
+                    <EditableField contentKey="contraTitle" element="h3" className="text-lg font-bold tracking-tight text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500" defaultSize={16} />
                     
-                    <div className="space-y-5 text-center mt-6">
-                      <div className="text-xl font-bold tracking-tight text-foreground/95 border-b border-white/5 pb-3">
-                        <EditableField contentKey="contraEmail" element="div" defaultSize={18} />
+                    <div className="space-y-2 text-center text-xs">
+                      <div className="font-extrabold text-foreground/95">
+                        <EditableField contentKey="contraEmail" element="div" defaultSize={14} />
                       </div>
-                      <div className="text-sm font-semibold text-foreground/80">
-                        <EditableField contentKey="contraPhone" element="div" defaultSize={14} />
+                      <div className="text-foreground/80 font-medium">
+                        <EditableField contentKey="contraPhone" element="div" defaultSize={11} />
                       </div>
-                      <div className="text-sm font-medium text-cyan-400">
-                        <EditableField contentKey="contraAddress" element="div" defaultSize={14} />
+                      <div className="text-cyan-400 font-semibold">
+                        <EditableField contentKey="contraAddress" element="div" defaultSize={11} />
                       </div>
-                      <div className="text-xs text-foreground/50 border-t border-white/10 pt-5 mt-5">
-                        <span className="block mb-2 text-[10px] font-extrabold uppercase tracking-widest text-foreground/40">Asignatura</span>
-                        <div className="font-semibold text-foreground leading-relaxed px-4">
-                          <EditableField contentKey="contraQRLabel" element="div" defaultSize={13} />
+                      <div className="text-[10px] text-foreground/50 border-t border-white/10 pt-2 mt-2">
+                        <span className="block mb-0.5 text-[8px] font-extrabold uppercase tracking-widest text-foreground/40">Asignatura</span>
+                        <div className="font-semibold text-foreground leading-relaxed px-2">
+                          <EditableField contentKey="contraQRLabel" element="div" defaultSize={11} />
                         </div>
                       </div>
                     </div>
 
-                    {/* Custom added blocks */}
+                    {/* Custom blocks list (Used for APA References) */}
                     {renderCustomBlocks("contra")}
                   </div>
 
-                  <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5 flex justify-between">
+                  <div className="text-xs text-foreground/40 font-mono mt-4 pt-2 border-t border-white/5 flex justify-between">
                     <span>Contraportada</span>
                     <span>Cara Externa</span>
                   </div>
                 </div>
               </div>
 
-              {/* PANEL 3: RIGHT PANEL (Inside Right / Outside Portada) */}
+              {/* PANEL 3: RIGHT PANEL (Inside Right [Pág 3] / Outside Portada) */}
               <div 
                 className={`panel-container panel-right-fold w-full h-full absolute top-0 left-[66.666666%]`}
                 style={{
@@ -857,7 +885,7 @@ export default function Home() {
                   zIndex: isOpen ? 10 : 35
                 }}
               >
-                {/* Inside Right (Cara Interior - Derecha) */}
+                {/* Inside Right (Página 3: El plan de comercialización) */}
                 <div className="panel-side-front w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto">
                   <div>
                     <div className="mb-6">
@@ -866,14 +894,20 @@ export default function Home() {
                         <EditableField contentKey="insideRightTag" element="span" defaultSize={12} />
                       </div>
                     </div>
-                    <EditableField contentKey="insideRightTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+
+                    {/* SVG Illustration: Comercialización */}
+                    <svg className="w-16 h-16 text-cyan-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.22.927a3.75 3.75 0 005.13 2.19l.221-.096m-7.29-9.529l.067.284a3.75 3.75 0 004.912 2.697l.065-.022M9 10.5h.008V10.5H9zm6 3h.008v.008H15V13.5zm-6-3a2.25 2.25 0 00-2.25 2.25v1.318a2.25 2.25 0 002.25 2.25H15a2.25 2.25 0 002.25-2.25v-1.318a2.25 2.25 0 00-2.25-2.25H9z" />
+                    </svg>
+
+                    <EditableField contentKey="insideRightTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                     <EditableField contentKey="insideRightDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
 
-                    {/* Testimonial Quote */}
+                    {/* Marketing Mix Box */}
                     <div className="p-4 rounded-2xl bg-white/5 border border-white/5 relative mb-2">
-                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs italic text-foreground/85 leading-relaxed" defaultSize={12} />
-                      <div className="mt-3 text-right">
-                        <EditableField contentKey="insideRightQuoteAuthor" element="span" className="text-[10px] font-bold uppercase tracking-wider text-cyan-400" defaultSize={10} />
+                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs font-medium text-foreground/85 leading-relaxed mb-3" defaultSize={12} />
+                      <div className="text-right">
+                        <EditableField contentKey="insideRightQuoteAuthor" element="span" className="text-[10px] font-bold tracking-wider text-cyan-400 italic" defaultSize={10} />
                       </div>
                     </div>
 
@@ -886,7 +920,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Outside Portada (Cara Exterior - Portada Principal) */}
+                {/* Outside Portada (Cara Exterior - Portada Principal: Definición del bien a producir) */}
                 <div 
                   className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative cursor-pointer`}
                   onClick={() => {
@@ -902,13 +936,18 @@ export default function Home() {
                         <div className={`w-3.5 h-3.5 rounded-full bg-gradient-to-r ${getGradient("primary")}`} />
                         <EditableField contentKey="portadaTag" element="span" className="text-xs font-bold tracking-wider uppercase opacity-85" defaultSize={12} />
                       </div>
-                      <EditableField contentKey="portadaEdition" element="span" className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10" defaultSize={10} />
                     </div>
 
-                    <div className="my-auto py-8">
-                      <EditableField contentKey="portadaTitle" element="h2" className="text-3xl font-extrabold tracking-tight leading-tight mb-3" defaultSize={30} />
-                      <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full"></div>
-                      <EditableField contentKey="portadaSubtitle" element="p" className="text-xs text-foreground/60 leading-relaxed max-w-[200px] mb-4" defaultSize={12} />
+                    {/* SVG Illustration: Diseño del Bien */}
+                    <svg className="w-20 h-20 text-cyan-400 mx-auto my-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                    </svg>
+
+                    <div className="my-auto py-4 text-center">
+                      <EditableField contentKey="portadaTitle" element="h2" className="text-3xl font-extrabold tracking-tight leading-tight mb-3" defaultSize={26} />
+                      <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full mx-auto"></div>
+                      <EditableField contentKey="portadaSubtitle" element="p" className="text-xs text-foreground/60 leading-relaxed mb-4" defaultSize={12} />
+                      <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic border-t border-white/5 pt-3" defaultSize={11} />
                       
                       {/* Custom added blocks */}
                       {renderCustomBlocks("portada")}
@@ -991,7 +1030,11 @@ export default function Home() {
                       <EditableField contentKey="insideLeftTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideLeftTitle" element="h3" className="text-xl font-bold tracking-tight mb-2" defaultSize={20} />
-                    <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed" defaultSize={14} />
+                    <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-4" defaultSize={14} />
+                    <div className="space-y-2">
+                      <EditableField contentKey="insideLeftBullet1Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
+                      <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-xs text-foreground/60" defaultSize={12} />
+                    </div>
                     
                     {/* Custom Blocks */}
                     {renderCustomBlocks("insideLeft")}
@@ -1006,23 +1049,10 @@ export default function Home() {
                       <EditableField contentKey="insideCenterTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideCenterTitle" element="h3" className="text-xl font-bold tracking-tight mb-4" defaultSize={20} />
-                    <div className="space-y-4 font-semibold">
-                      <div>
-                        <div className="flex justify-between text-xs mb-1">
-                          <EditableField contentKey="insideCenterStat1Label" element="span" defaultSize={12} />
-                        </div>
-                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "95%" }}></div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="flex justify-between text-xs mb-1">
-                          <EditableField contentKey="insideCenterStat2Label" element="span" defaultSize={12} />
-                        </div>
-                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("secondary")} rounded-full`} style={{ width: "90%" }}></div>
-                        </div>
-                      </div>
+                    <EditableField contentKey="insideCenterDesc" element="p" className="text-sm text-foreground/70 mb-4" defaultSize={13} />
+                    <div className="space-y-2">
+                      <EditableField contentKey="insideCenterStat1Label" element="div" className="text-xs text-foreground/80" defaultSize={12} />
+                      <EditableField contentKey="insideCenterStat2Label" element="div" className="text-xs text-foreground/80" defaultSize={12} />
                     </div>
 
                     {/* Custom Blocks */}
