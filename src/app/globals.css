@@ -152,9 +152,23 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--panel-border);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.theme-light ::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.25);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.theme-light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.45);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }

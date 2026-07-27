@@ -661,7 +661,7 @@ export default function Home() {
 
         {/* DESKTOP 3D BROCHURE VIEW */}
         <div 
-          className="hidden lg:block w-full max-w-[1080px] brochure-viewport relative transition-all duration-150"
+          className="hidden lg:block w-full max-w-[90vw] brochure-viewport relative transition-all duration-150"
           style={{ height: `${height}px` }}
         >
           <div 
@@ -940,7 +940,7 @@ export default function Home() {
         {/* Drag handle to resize height (visible on desktop) */}
         <div 
           onMouseDown={startResize}
-          className={`hidden lg:flex w-full max-w-[1080px] h-7 items-center justify-center cursor-ns-resize group/handle mt-3 relative select-none z-20 ${
+          className={`hidden lg:flex w-full max-w-[90vw] h-7 items-center justify-center cursor-ns-resize group/handle mt-3 relative select-none z-20 ${
             isResizing ? "bg-cyan-500/10 rounded-lg border border-cyan-500/20" : ""
           }`}
           title="Arrastra hacia abajo para ajustar la altura del tríptico"
