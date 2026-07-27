@@ -88,13 +88,13 @@ export default function Home() {
   const [height, setHeight] = useState<number>(550);
   const [isResizing, setIsResizing] = useState(false);
 
-  // Brochure Text Content State (Extended with comprehensive explanations and examples)
+  // Brochure Text Content State (Tripled in size for maximum depth)
   const [content, setContent] = useState<BrochureContent>({
     // Cara Exterior - Portada (Derecha) -> Definición del bien a producir
     portadaTag: "Etapa 1 - Estudio de Mercado",
     portadaTitle: "Definición del bien a producir",
-    portadaSubtitle: "Consiste en la caracterización exacta, técnica y comercial del producto o servicio que se pretende introducir en el mercado. Esta definición establece el punto de partida del proyecto al clarificar la naturaleza física, funcional y legal del bien, asegurando que cubra una necesidad específica identificada en el mercado.",
-    portadaEdition: "CARACTERÍSTICAS:\n1. Especificaciones Técnicas: Dimensiones, materiales, peso, envase, empaque y vida útil.\n2. Propuesta de Valor y Usos: Identificación del factor diferenciador y beneficios clave.\n3. Normativas y Patentes: Requisitos legales, registros sanitarios y patentes.\n\nEJEMPLO: Un termo inteligente fabricado con acero de grado alimenticio, con pantalla LED de temperatura en tiempo real y patente de aislamiento de doble pared que mantiene bebidas calientes por 12 horas.",
+    portadaSubtitle: "La definición del bien o servicio es la piedra angular sobre la cual se edifica cualquier estudio de mercado y evaluación financiera. Consiste en la caracterización y descripción detallada de todas las propiedades físicas, químicas, técnicas y funcionales del producto o servicio que se pretende introducir en el mercado. Esto permite al evaluador de proyectos delimitar el alcance técnico del proceso de producción y prever los insumos, maquinaria e infraestructura necesarios para su desarrollo comercial de manera rigurosa.",
+    portadaEdition: "CARACTERÍSTICAS METODOLÓGICAS:\n1. Especificaciones Técnicas y de Diseño: Incluye dimensiones, peso, materiales de composición (plásticos, metales, componentes electrónicos), empaque (primario, secundario, terciario) y ciclo de vida estimado.\n2. Propuesta de Valor y Usos: Se debe responder a la pregunta fundamental de qué problema resuelve o qué necesidad satisface. Describe la diferenciación competitiva y el valor agregado intangible que percibirá el cliente.\n3. Aspectos Regulatorios y Propiedad Intelectual: Normas oficiales de calidad (NOM, ISO), registros sanitarios (FDA, COFEPRIS), marcas registradas, patentes de invención y regulaciones ambientales obligatorias para su venta.\n\nEJEMPLO DE APLICACIÓN PRÁCTICA:\nCaso - Dispositivo IoT 'EcoTemp v2': Un termostato inteligente doméstico fabricado con aluminio reciclado y vidrio templado, con dimensiones de 10x10 cm. Cuenta con sensores de temperatura, humedad y presencia, y conectividad Wi-Fi dual. Su propuesta de valor es el ahorro automático de hasta un 30% en consumo eléctrico residencial gracias a un algoritmo predictivo de IA. Legalmente, cuenta con certificación internacional de seguridad eléctrica, patente del algoritmo registrada ante la oficina de propiedad intelectual y empaque biodegradable de cartón prensado con instructivo digital.",
     
     // Cara Exterior - Contraportada (Centro) -> Credenciales UVM
     contraTitle: "Actividad 1. Infografía",
@@ -106,38 +106,38 @@ export default function Home() {
     // Cara Exterior - Solapa Interna (Izquierda) -> Análisis del consumidor
     solapaTag: "Etapa 2",
     solapaTitle: "Análisis del consumidor",
-    solapaDesc: "Es el estudio sistemático del comportamiento, necesidades, motivaciones, hábitos de compra y niveles de satisfacción del público objetivo. Permite a las empresas orientar sus esfuerzos comerciales hacia los clientes más rentables y ajustar su propuesta de valor a las demandas reales.",
-    solapaButton: "CARACTERÍSTICAS:\n1. Segmentación del Mercado: División del mercado por variables demográficas, geográficas y psicográficas.\n2. Perfil del Consumidor (Buyer Persona): Creación de un arquetipo detallado del cliente ideal y sus necesidades.\n3. Comportamiento y Hábitos de Compra: Análisis del proceso de decisión de compra y frecuencia de adquisición.\n\nEJEMPLO: Para una aplicación de fitness, el consumidor objetivo son profesionales urbanos de 25 a 45 años, con ingresos medios-altos, bajo alto estrés laboral y que prefieren rutinas cortas de 20 minutos en casa sin equipo.",
+    solapaDesc: "El análisis del consumidor investiga los patrones de comportamiento de compra y consumo del público objetivo para estructurar estrategias comerciales eficaces. En el diseño de proyectos, este análisis ayuda a cuantificar el tamaño de la demanda potencial y a entender qué variables influyen en la toma de decisiones del consumidor final.",
+    solapaButton: "CARACTERÍSTICAS METODOLÓGICAS:\n1. Segmentación del Mercado: Proceso de fragmentar el mercado en grupos homogéneos basados en criterios demográficos (edad, ingresos, ocupación), geográficos (localización, clima), psicográficos (personalidad, estilo de vida, valores) y conductuales (frecuencia de uso, beneficios buscados, lealtad de marca).\n2. Perfil del Consumidor (Buyer Persona): Arquetipo semificticio que describe al cliente ideal, detallando sus objetivos diarios, frustraciones con soluciones actuales y motivaciones de compra.\n3. Proceso y Hábitos de Compra: Estudio de los roles en la compra (iniciador, influyente, decisor, comprador, usuario), la frecuencia de compra, los canales preferidos de información y los disparadores de decisión.\n\nEJEMPLO DE APLICACIÓN PRÁCTICA:\nCaso - Consumidor de Plataforma SaaS de Gestión Escolar: El cliente decisor se segmenta como Directores de Colegios Privados en zonas urbanas de ingresos medios, de 35 a 60 años, con conocimientos tecnológicos básicos. El buyer persona representativo es 'Director Carlos', cuyas frustraciones son la pérdida de tiempo en reportes de asistencia manuales y la comunicación ineficiente con los padres. Su disparador de compra es la necesidad de digitalizar la administración del plantel para retener matrícula y proyectar una imagen de vanguardia educativa.",
 
     // Inside Left (Página 1) -> Análisis de la competencia
     insideLeftTag: "Etapa 3",
     insideLeftTitle: "Análisis de la competencia",
-    insideLeftDesc: "Es la evaluación estructurada de las empresas que ofrecen productos similares (competencia directa) o sustitutos (competencia indirecta) en el mismo mercado geográfico y demográfico. Sirve para identificar sus capacidades, estrategias, fortalezas y debilidades.",
+    insideLeftDesc: "El análisis de la competencia es una evaluación sistemática de las capacidades, recursos, debilidades, fortalezas y estrategias comerciales de los competidores directos (rivales que ofrecen el mismo producto) e indirectos (empresas que comercializan productos sustitutos) que operan en el mismo segmento de mercado. Conocer al adversario permite diseñar estrategias de diferenciación sólidas y prever sus reacciones ante nuestra entrada al mercado.",
     insideLeftBullet1Title: "Características Clave:",
-    insideLeftBullet1Desc: "1. Benchmarking de Atributos: Comparación de características, calidad, servicio al cliente y canales.\n2. Estrategia de Precios: Análisis de sus esquemas de descuento, políticas de crédito y márgenes de ganancia.\n3. Barreras de Entrada: Evaluación de patentes, de economías de escala y lealtad a la marca ya establecida.",
+    insideLeftBullet1Desc: "1. Benchmarking Competitivo: Comparativa técnica de atributos (calidad de materiales, facilidad de uso, soporte técnico, tiempo de entrega, garantías) frente a los líderes del sector.\n2. Estructura de Precios y Costos: Análisis de las políticas de precios de los competidores, márgenes de intermediación, esquemas de crédito y promociones especiales.\n3. Identificación de Barreras de Entrada y Salida: Evaluación de obstáculos del mercado como patentes dominantes, economías de escala de grandes cadenas, contratos exclusivos de distribución y altos costos de cambio para el cliente.",
     insideLeftBullet2Title: "Ejemplo Práctico:",
-    insideLeftBullet2Desc: "Una nueva cafetería artesanal analiza a Starbucks (competencia directa), reconociendo su fortaleza en conveniencia y estatus de marca, pero su debilidad en café industrial estandarizado. La cafetería local decide diferenciarse ofreciendo café de origen único de especialidad con tostado local.",
+    insideLeftBullet2Desc: "Caso - Empresa de Delivery Local frente a Gigantes (UberEats/Rappi): La competencia directa posee economías de escala y gran presupuesto publicitario, pero su debilidad es la alta tasa de comisión (hasta 30%) cobrada a los restaurantes locales y el soporte automatizado ineficiente. La nueva empresa local decide diferenciarse ofreciendo una comisión reducida del 15%, un canal de soporte telefónico directo para restaurantes y repartidores locales contratados formalmente, asegurando una atención premium y comunitaria.",
 
     // Inside Center (Página 2) -> Previsión de la demanda
     insideCenterTag: "Etapa 4",
     insideCenterTitle: "Previsión de la demanda",
-    insideCenterDesc: "Consiste en estimar científicamente la cantidad futura de un bien o servicio que los consumidores estarán dispuestos a adquirir en un periodo determinado y bajo condiciones de mercado específicas, permitiendo planificar la producción y flujos financieros.",
-    insideCenterStat1Label: "Métodos Cualitativos: Encuestas de intención de compra del consumidor, opinión de la fuerza de ventas y el Método Delphi.",
-    insideCenterStat2Label: "Métodos Cuantitativos: Modelos de series de tiempo (promedios móviles, suavizamiento) y modelos causales de regresión lineal.",
-    insideCenterStat3Label: "EJEMPLO: Una fábrica de abrigos proyecta un alza del 40% en ventas cruzando datos de temperatura invernal pronosticada e intención de compra en otoño, optimizando así la compra de lanas y turnos de costura.",
+    insideCenterDesc: "La previsión de la demanda consiste en proyectar el volumen futuro de ventas de un bien o servicio a través de modelos matemáticos y análisis cualitativos. Esta proyección permite al evaluador del proyecto dimensionar la capacidad instalada de la planta, definir el presupuesto de operación, planificar inventarios y estimar los ingresos futuros en los flujos de caja del análisis de factibilidad financiera.",
+    insideCenterStat1Label: "Métodos Cualitativos: Se aplican cuando los datos históricos son escasos (por ejemplo, en el lanzamiento de un producto innovador). Incluyen encuestas de intención de compra de consumidores potenciales, consulta a paneles de vendedores y el Método Delphi (consenso de expertos mediante rondas de preguntas anónimas).",
+    insideCenterStat2Label: "Métodos Cuantitativos: Modelos de series de tiempo (promedios móviles, suavizamiento exponencial) que proyectan basándose en el comportamiento histórico del mercado, y modelos causales (regresiones lineales simples o múltiples) que asocian la demanda con variables externas explicativas.",
+    insideCenterStat3Label: "EJEMPLO: Caso - Alimento Orgánico de Mascotas: Se realiza un modelo causal donde la variable independiente es la tasa de adopción de mascotas de raza pequeña en la región y el crecimiento del gasto promedio en bienestar animal. El modelo de regresión lineal simple ($Y = a + bX$) proyecta una demanda de 12,000 unidades para el primer año de operación, con una tasa de crecimiento anual sostenida del 8.5% en función de la tendencia de humanización de las mascotas.",
 
     // Inside Right (Página 3) -> El plan de comercialización
     insideRightTag: "Etapa 5",
     insideRightTitle: "El plan de comercialización",
-    insideRightDesc: "Es el conjunto de estrategias, canales y acciones comerciales dirigidas a colocar el bien o servicio en manos del consumidor final en las condiciones óptimas, al precio correcto y con la comunicación adecuada para maximizar ventas.",
-    insideRightQuote: "El Marketing Mix (Las 4Ps): Producto (marca, diseño, postventa), Precio (descuentos, costos), Plaza (canales físicos o e-commerce directo) y Promoción (publicidad digital, redes sociales, relaciones públicas).",
-    insideRightQuoteAuthor: "EJEMPLO: Para un software SaaS contable, el plan integra una aplicación en la nube (Producto), con suscripción mensual escalable (Precio), distribución directa vía descarga web (Plaza) y una campaña en LinkedIn junto con pruebas gratuitas de 14 días (Promoción).",
+    insideRightDesc: "El plan de comercialización define la estrategia integrada para hacer llegar el producto o servicio al público objetivo en el momento, lugar y precio correctos, motivando la compra a través de canales de comunicación eficaces. Es la ejecución comercial del proyecto y la interfaz directa con el mercado.",
+    insideRightQuote: "El Marketing Mix (Las 4Ps): Producto (portafolio de productos, diseño de la marca, empaque y políticas de garantías y servicio postventa), Precio (fijación del precio basada en costos [markup], precios de la competencia o valor percibido), Plaza (canales directos [venta web, tiendas propias] o indirectos [mayoristas, detallistas]) y Promoción (publicidad digital [SEO, SEM, redes sociales], relaciones públicas y marketing de influencia).",
+    insideRightQuoteAuthor: "EJEMPLO: Caso - Marca de Cosméticos Orgánicos Veganos: El plan establece un catálogo de cremas faciales en envases de vidrio retornable (Producto). El precio se fija por valor percibido un 15% arriba del mercado tradicional para proyectar exclusividad y cubrir costos de ingredientes orgánicos certificados (Precio). La plaza inicial se enfoca en canales digitales propios (e-commerce Shopify) y distribución física selectiva en 10 boutiques ecológicas aliadas (Plaza). La promoción se apoya en publicidad pagada en Instagram y TikTok enfocada en sustentabilidad, y colaboraciones con influencers del movimiento cruelty-free (Promoción).",
   });
 
   // Default font sizes map (key -> size in pixels)
   const [fontSizes, setFontSizes] = useState<Record<string, number>>({});
 
-  // Pre-populated custom blocks (Updated to only show the two requested references)
+  // Pre-populated custom blocks (Exactly two APA references)
   const [customBlocks, setCustomBlocks] = useState<Record<string, CustomBlock[]>>({
     insideLeft: [],
     insideCenter: [],
@@ -536,7 +536,7 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header className="w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-4 mb-8 z-10">
+      <header className="w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-4 mb-8 z-10 print:hidden">
         <div className="flex items-center gap-3">
           <div className={`p-2.5 rounded-xl bg-gradient-to-r ${getGradient("primary")} shadow-lg shadow-black/10`}>
             <Layers className="w-6 h-6 text-white" />
@@ -625,7 +625,7 @@ export default function Home() {
           <button 
             onClick={() => setIsFlipped(!isFlipped)}
             disabled={!isOpen}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 border ${
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 border mr-1 ${
               !isOpen 
                 ? "opacity-40 cursor-not-allowed border-transparent text-foreground/40" 
                 : "border-white/10 hover:bg-white/10 text-foreground cursor-pointer"
@@ -634,11 +634,21 @@ export default function Home() {
             <RotateCw className="w-4 h-4" />
             <span>{isFlipped ? "Ver Interior" : "Girar Tríptico"}</span>
           </button>
+
+          {/* Native PDF Print Trigger */}
+          <button 
+            onClick={() => window.print()}
+            className="flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 bg-cyan-600 hover:bg-cyan-500 text-white border border-cyan-500/50 shadow-lg cursor-pointer"
+            title="Exportar tríptico a PDF para impresión o entrega"
+          >
+            <Layers className="w-4 h-4" />
+            <span>Exportar PDF</span>
+          </button>
         </div>
       </header>
 
       {/* Main View Area */}
-      <main className="flex-1 w-full flex flex-col items-center justify-center py-4 z-10">
+      <main className="flex-1 w-full flex flex-col items-center justify-center py-4 z-10 print:hidden">
         
         {/* Helper Instructions Banner */}
         <div className="mb-6 text-center max-w-md">
@@ -702,7 +712,7 @@ export default function Home() {
                         </div>
                         <div className="w-full">
                           <EditableField contentKey="insideLeftBullet1Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
-                          <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed" defaultSize={11} />
+                          <EditableField contentKey="insideLeftBullet1Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed whitespace-pre-line" defaultSize={11} />
                         </div>
                       </div>
                       <div className="flex gap-3 items-start">
@@ -711,7 +721,7 @@ export default function Home() {
                         </div>
                         <div className="w-full">
                           <EditableField contentKey="insideLeftBullet2Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
-                          <EditableField contentKey="insideLeftBullet2Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed" defaultSize={11} />
+                          <EditableField contentKey="insideLeftBullet2Desc" element="p" className="text-[11px] text-foreground/60 leading-relaxed whitespace-pre-line" defaultSize={11} />
                         </div>
                       </div>
                     </div>
@@ -847,7 +857,7 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {/* Custom blocks list (APA References block - displays ONLY Meza & Mondragón) */}
+                    {/* Custom blocks list (Used for APA References) */}
                     {renderCustomBlocks("contra")}
                   </div>
 
@@ -929,7 +939,7 @@ export default function Home() {
                       <EditableField contentKey="portadaTitle" element="h2" className="text-3xl font-extrabold tracking-tight leading-tight mb-3" defaultSize={26} />
                       <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full mx-auto"></div>
                       <EditableField contentKey="portadaSubtitle" element="p" className="text-xs text-foreground/60 leading-relaxed mb-4" defaultSize={12} />
-                      <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic border-t border-white/5 pt-3 whitespace-pre-line text-left leading-relaxed" defaultSize={11} />
+                      <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic border-t border-white/5 pt-3 whitespace-pre-line text-left leading-relaxed font-sans" defaultSize={11} />
                       
                       {/* Custom added blocks */}
                       {renderCustomBlocks("portada")}
@@ -1125,8 +1135,110 @@ export default function Home() {
 
       </main>
 
+      {/* PRINT-ONLY AREA */}
+      <div className="print-only-container hidden print:block w-full text-zinc-100 bg-[#09090b] font-sans p-0 m-0">
+        
+        {/* PAGE 1: CARA INTERNA (Inside Face) */}
+        <div className="print-page w-full h-[100vh] grid grid-cols-3 gap-6 p-8 bg-[#09090b]" style={{ pageBreakAfter: "always" }}>
+          
+          {/* Panel 1: Análisis de la Competencia */}
+          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+            <div>
+              <div className="text-[10px] uppercase font-bold tracking-widest text-amber-400 mb-2">Etapa 3 - Cara Interna</div>
+              <h3 className="text-xl font-bold text-white mb-4">Análisis de la competencia</h3>
+              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.insideLeftDesc}</p>
+              <div className="border-t border-white/10 pt-3 mt-3">
+                <h4 className="text-xs font-bold text-white mb-1">{content.insideLeftBullet1Title}</h4>
+                <p className="text-[9px] text-zinc-400 leading-relaxed whitespace-pre-line">{content.insideLeftBullet1Desc}</p>
+              </div>
+              <div className="border-t border-white/10 pt-3 mt-3">
+                <h4 className="text-xs font-bold text-white mb-1">{content.insideLeftBullet2Title}</h4>
+                <p className="text-[9px] text-zinc-400 leading-relaxed whitespace-pre-line">{content.insideLeftBullet2Desc}</p>
+              </div>
+            </div>
+            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Pág 1 / Cara Interna</div>
+          </div>
+
+          {/* Panel 2: Previsión de la Demanda */}
+          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+            <div>
+              <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-400 mb-2">Etapa 4 - Cara Interna</div>
+              <h3 className="text-xl font-bold text-white mb-4">Previsión de la demanda</h3>
+              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.insideCenterDesc}</p>
+              <div className="space-y-3 border-t border-white/10 pt-3 mt-3">
+                <p className="text-[9px] text-zinc-400 leading-relaxed"><span className="font-bold text-white">Cualitativo:</span> {content.insideCenterStat1Label}</p>
+                <p className="text-[9px] text-zinc-400 leading-relaxed"><span className="font-bold text-white">Cuantitativo:</span> {content.insideCenterStat2Label}</p>
+                <p className="text-[9px] text-cyan-300 font-semibold italic bg-white/5 p-3 rounded-xl border border-white/5">{content.insideCenterStat3Label}</p>
+              </div>
+            </div>
+            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Pág 2 / Cara Interna</div>
+          </div>
+
+          {/* Panel 3: El Plan de Comercialización */}
+          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+            <div>
+              <div className="text-[10px] uppercase font-bold tracking-widest text-cyan-400 mb-2">Etapa 5 - Cara Interna</div>
+              <h3 className="text-xl font-bold text-white mb-4">El plan de comercialización</h3>
+              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.insideRightDesc}</p>
+              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+                <p className="text-[9px] text-zinc-200 leading-relaxed font-medium mb-2">{content.insideRightQuote}</p>
+                <p className="text-[8px] text-cyan-400 font-bold text-right italic">{content.insideRightQuoteAuthor}</p>
+              </div>
+            </div>
+            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Pág 3 / Cara Interna</div>
+          </div>
+        </div>
+
+        {/* PAGE 2: CARA EXTERNA (Outside Face) */}
+        <div className="print-page w-full h-[100vh] grid grid-cols-3 gap-6 p-8 bg-[#09090b]">
+          
+          {/* Panel 1: Solapa - Análisis del Consumidor */}
+          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+            <div>
+              <div className="text-[10px] uppercase font-bold tracking-widest text-purple-400 mb-2">Etapa 2 - Solapa Interna</div>
+              <h3 className="text-xl font-bold text-white mb-4">Análisis del consumidor</h3>
+              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.solapaDesc}</p>
+              <p className="text-[9px] text-zinc-400 italic border-l-2 border-purple-500/50 pl-3 mt-4 whitespace-pre-line">{content.solapaButton}</p>
+            </div>
+            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Solapa / Cara Externa</div>
+          </div>
+
+          {/* Panel 2: Contraportada - Credenciales UVM y Referencias */}
+          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md text-center">
+            <div>
+              <h3 className="text-lg font-bold text-white mb-1">{content.contraTitle}</h3>
+              <p className="text-xs font-extrabold text-white">{content.contraEmail}</p>
+              <p className="text-[10px] text-zinc-300">{content.contraPhone}</p>
+              <p className="text-[10px] text-cyan-400 font-semibold mb-2">{content.contraAddress}</p>
+              <p className="text-[9px] text-zinc-500 border-t border-white/10 pt-1 mt-1 mb-4">{content.contraQRLabel}</p>
+              
+              {/* Referencias APA */}
+              <div className="text-left border-t border-white/10 pt-3">
+                <h4 className="text-[10px] font-bold text-white mb-2">Referencias Bibliográficas (APA):</h4>
+                <p className="text-[8px] text-zinc-400 leading-relaxed mb-2">Meza, J. (2013). Evaluación financiera de proyectos: 10 casos prácticos resueltos en Excel. [Archivo PDF]. Recuperado de http://190.57.147.202:90/jspui/bitstream/123456789/1402/1/Evaluaci%C3%B3n%20financiera%20de%20proyectos.pdf</p>
+                <p className="text-[8px] text-zinc-400 leading-relaxed">Mondragon, D. (2017). Formulación y evaluación de proyectos. [Archivo PDF]. Recuperado de https://digitk.areandina.edu.co/bitstream/handle/areandina/1318/Formulaci%C3%B3n%20y%20Evaluaci%C3%B3n%20de%20Proyectos.pdf?sequence=1</p>
+              </div>
+            </div>
+            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4 text-left">Contraportada / Cara Externa</div>
+          </div>
+
+          {/* Panel 3: Portada - Definición del Bien */}
+          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+            <div>
+              <div className="text-[10px] uppercase font-bold tracking-widest text-cyan-400 mb-2">Etapa 1 - Portada Principal</div>
+              <h2 className="text-2xl font-extrabold text-white mb-3">{content.portadaTitle}</h2>
+              <div className="w-12 h-1 bg-cyan-400 mb-4 rounded-full"></div>
+              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed">{content.portadaSubtitle}</p>
+              <p className="text-[9px] text-zinc-400 border-t border-white/10 pt-3 mt-3 whitespace-pre-line text-left leading-relaxed">{content.portadaEdition}</p>
+            </div>
+            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Portada / Cara Externa</div>
+          </div>
+
+        </div>
+      </div>
+
       {/* Footer */}
-      <footer className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-6 border-t border-white/5 text-xs text-foreground/40 z-10">
+      <footer className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-6 border-t border-white/5 text-xs text-foreground/40 z-10 print:hidden">
         <div>
           <span>Desarrollado para fines académicos y de demostración. © 2026.</span>
         </div>
