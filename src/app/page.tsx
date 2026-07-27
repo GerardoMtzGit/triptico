@@ -9,9 +9,6 @@ import {
   Globe, 
   Cpu, 
   Shield, 
-  Mail, 
-  Phone, 
-  MapPin, 
   CheckCircle2, 
   ArrowRight,
   Monitor,
@@ -23,7 +20,8 @@ import {
   ZoomOut,
   Plus,
   Trash2,
-  Image as ImageIcon
+  Image as ImageIcon,
+  GraduationCap
 } from "lucide-react";
 
 type Theme = "cyber" | "emerald" | "sunset" | "light";
@@ -37,10 +35,10 @@ interface BrochureContent {
   
   // Contraportada (Outside Center)
   contraTitle: string;
-  contraEmail: string;
-  contraPhone: string;
-  contraAddress: string;
-  contraQRLabel: string;
+  contraEmail: string; // Used for Student Name
+  contraPhone: string; // Used for Program Name
+  contraAddress: string; // Used for University Name
+  contraQRLabel: string; // Used for Course Name
   
   // Solapa (Outside Left)
   solapaTag: string;
@@ -90,55 +88,86 @@ export default function Home() {
   const [height, setHeight] = useState<number>(550);
   const [isResizing, setIsResizing] = useState(false);
 
-  // Brochure Text Content State
+  // Brochure Text Content State (Populated for Gerardo's homework)
   const [content, setContent] = useState<BrochureContent>({
-    portadaTitle: "EL FUTURO DIGITAL AQUÍ & AHORA",
-    portadaSubtitle: "Descubre cómo las tecnologías interactivas están redefiniendo la web moderna.",
-    portadaTag: "NEXT.GEN",
-    portadaEdition: "EDICIÓN 2026",
+    portadaTitle: "ESTUDIO DE MERCADO",
+    portadaSubtitle: "Conceptos principales y metodologías para el análisis y evaluación financiera de proyectos de inversión.",
+    portadaTag: "UVM - MAESTRÍA IA",
+    portadaEdition: "ACTIVIDAD 1",
     
-    contraTitle: "Contacto & Soporte",
-    contraEmail: "soporte@tripticodigital.com",
-    contraPhone: "+52 (55) 1234-5678",
-    contraAddress: "Av. de la Innovación 404, Ciudad de México",
-    contraQRLabel: "Escanear Sitio",
+    contraTitle: "Actividad 1. Infografía",
+    contraEmail: "Gerardo Antonio Martínez García",
+    contraPhone: "Maestría en Inteligencia Artificial",
+    contraAddress: "Universidad del Valle de México (UVM)",
+    contraQRLabel: "Evaluación financiera y análisis de costos y riesgos",
     
-    solapaTag: "Innovación",
-    solapaTitle: "Únete a Nosotros",
-    solapaDesc: "Mantente informado sobre las últimas tendencias de diseño y desarrollo web interactivo. Suscríbete para recibir novedades.",
-    solapaButton: "Suscribirme",
+    solapaTag: "Bibliografía",
+    solapaTitle: "Referencias APA",
+    solapaDesc: "Listado de fuentes empleadas en el desarrollo de este estudio de mercado:",
+    solapaButton: "Saber más",
 
-    insideLeftTag: "Introducción",
-    insideLeftTitle: "Nuestra Visión",
-    insideLeftDesc: "Buscamos transformar la interacción digital mediante experiencias visuales inmersivas en la web. Este tríptico demuestra el potencial de combinar diseño 3D con tecnologías modernas como Next.js y Tailwind CSS.",
-    insideLeftBullet1Title: "Interactividad 3D",
-    insideLeftBullet1Desc: "Efectos fluidos y realistas simulando papel físico.",
-    insideLeftBullet2Title: "Rendimiento Next.js",
-    insideLeftBullet2Desc: "Carga instantánea y arquitectura optimizada.",
+    insideLeftTag: "Fase 1",
+    insideLeftTitle: "Definición del Bien y Análisis del Consumidor",
+    insideLeftDesc: "El punto de partida de todo estudio de mercado es la delimitación del producto o servicio y la comprensión del público objetivo.",
+    insideLeftBullet1Title: "1. Definición del bien a producir",
+    insideLeftBullet1Desc: "Consiste en la descripción exacta del producto o servicio: especificaciones técnicas, utilidad, empaque, patentes y el valor diferenciador que resolverá la necesidad identificada.",
+    insideLeftBullet2Title: "2. Análisis del consumidor",
+    insideLeftBullet2Desc: "Investiga quién compra, por qué, con qué frecuencia y cuáles son sus preferencias. Permite segmentar el mercado de forma demográfica, geográfica y conductual.",
 
-    insideCenterTag: "Soluciones",
-    insideCenterTitle: "Servicios Clave",
-    insideCenterDesc: "Desarrollamos interfaces web de alta gama que combinan usabilidad con estética premium para destacar en el mercado actual.",
-    insideCenterStat1Label: "Rendimiento Web",
-    insideCenterStat2Label: "Experiencia de Usuario",
-    insideCenterStat3Label: "Seguridad y Escabilidad",
+    insideCenterTag: "Fase 2",
+    insideCenterTitle: "Competencia y Previsión de la Demanda",
+    insideCenterDesc: "Evaluación del entorno competitivo y estimación del comportamiento futuro de las ventas del proyecto.",
+    insideCenterStat1Label: "3. Análisis de la competencia: Identificación de competidores, cuota de mercado, fortalezas, debilidades, precios y canales de distribución.",
+    insideCenterStat2Label: "4. Previsión de la demanda: Estimación de ventas futuras usando datos históricos, métodos cualitativos (expertos) y cuantitativos.",
+    insideCenterStat3Label: "Eficiencia y Viabilidad Comercial del Proyecto en el Mercado",
 
-    insideRightTag: "Beneficios",
-    insideRightTitle: "¿Por Qué Elegirnos?",
-    insideRightDesc: "Ofrecemos un enfoque vanguardista enfocado en la experiencia estética y velocidad de respuesta.",
-    insideRightQuote: "El nivel de detalle visual y la fluidez interactiva de esta plataforma superó nuestras expectativas. Es una pieza de arte digital.",
-    insideRightQuoteAuthor: "Diseñador Líder",
+    insideRightTag: "Fase 3",
+    insideRightTitle: "El Plan de Comercialización",
+    insideRightDesc: "Estrategias de colocación e inserción del producto.",
+    insideRightQuote: "Las 4Ps (Producto, Precio, Plaza y Promoción) definen el Plan de Comercialización. Determinan cómo el bien llegará al consumidor final y cómo se comunicará la propuesta de valor para asegurar el éxito del proyecto.",
+    insideRightQuoteAuthor: "Estrategia del Marketing Mix",
   });
 
   // Default font sizes map (key -> size in pixels)
   const [fontSizes, setFontSizes] = useState<Record<string, number>>({});
 
-  // Custom added blocks state (can contain text paragraphs, headings, or images)
+  // Pre-populated custom blocks (references for Gerardo's homework)
   const [customBlocks, setCustomBlocks] = useState<Record<string, CustomBlock[]>>({
     insideLeft: [],
     insideCenter: [],
     insideRight: [],
-    solapa: [],
+    solapa: [
+      {
+        id: "ref1",
+        type: "paragraph",
+        text: "Baca Urbina, G. (2016). Evaluación de proyectos (8va ed.). McGraw-Hill Education.",
+        fontSize: 12
+      },
+      {
+        id: "ref2",
+        type: "paragraph",
+        text: "Kotler, P., & Keller, K. L. (2016). Dirección de marketing (15va ed.). Pearson Educación.",
+        fontSize: 12
+      },
+      {
+        id: "ref3",
+        type: "paragraph",
+        text: "Malhotra, N. K. (2020). Investigación de mercados: Conceptos esenciales (6ta ed.). Pearson.",
+        fontSize: 12
+      },
+      {
+        id: "ref4",
+        type: "paragraph",
+        text: "Nassir Sapag, C., & Sapag Chain, R. (2014). Preparación y evaluación de proyectos (6ta ed.). McGraw-Hill.",
+        fontSize: 12
+      },
+      {
+        id: "ref5",
+        type: "paragraph",
+        text: "Porter, M. E. (2015). Ventaja competitiva: Creación y sostenimiento de un desempeño superior (2da ed.). Patria.",
+        fontSize: 12
+      }
+    ],
     contra: [],
     portada: [],
   });
@@ -258,7 +287,7 @@ export default function Home() {
     const fontSize = getFontSize(contentKey, defaultSize);
 
     return (
-      <div className="relative group/field inline-block w-full">
+      <div className="relative group/field inline-block w-full text-inherit">
         {isEditing && (
           <div className="absolute -top-7 left-0 flex items-center gap-1.5 bg-zinc-950 border border-white/10 px-2 py-0.5 rounded-lg shadow-lg z-30 opacity-0 group-hover/field:opacity-100 transition-opacity pointer-events-auto select-none">
             <span className="text-[9px] text-foreground/50">Tamaño:</span>
@@ -663,8 +692,8 @@ export default function Home() {
                         <EditableField contentKey="insideLeftTag" element="span" defaultSize={12} />
                       </div>
                     </div>
-                    <EditableField contentKey="insideLeftTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={24} />
-                    <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={14} />
+                    <EditableField contentKey="insideLeftTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+                    <EditableField contentKey="insideLeftDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
                     
                     <div className="space-y-4">
                       <div className="flex gap-3 items-start">
@@ -705,22 +734,8 @@ export default function Home() {
                           <EditableField contentKey="solapaTag" element="span" defaultSize={12} />
                         </div>
                       </div>
-                      <EditableField contentKey="solapaTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={24} />
-                      <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={14} />
-                      
-                      {/* Subscription Box placeholder */}
-                      <div className="space-y-2 mt-4">
-                        <input 
-                          type="email" 
-                          placeholder="Tu correo electrónico" 
-                          className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm focus:outline-none focus:border-white/20 transition"
-                          disabled
-                        />
-                        <button className={`w-full py-2.5 rounded-xl text-sm font-medium bg-gradient-to-r ${getGradient("primary")} text-white flex items-center justify-center gap-2 cursor-pointer`}>
-                          <EditableField contentKey="solapaButton" element="span" defaultSize={14} />
-                          <ArrowRight className="w-4 h-4" />
-                        </button>
-                      </div>
+                      <EditableField contentKey="solapaTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+                      <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
 
                       {/* Custom added blocks */}
                       {renderCustomBlocks("solapa")}
@@ -754,33 +769,30 @@ export default function Home() {
                         <EditableField contentKey="insideCenterTag" element="span" defaultSize={12} />
                       </div>
                     </div>
-                    <EditableField contentKey="insideCenterTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={24} />
-                    <EditableField contentKey="insideCenterDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={14} />
+                    <EditableField contentKey="insideCenterTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+                    <EditableField contentKey="insideCenterDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
 
                     {/* Stats labels */}
                     <div className="space-y-4">
                       <div>
-                        <div className="flex justify-between text-xs font-semibold mb-1">
+                        <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
                           <EditableField contentKey="insideCenterStat1Label" element="span" defaultSize={12} />
-                          <span className="text-cyan-400">98%</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "98%" }}></div>
+                          <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "95%" }}></div>
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-xs font-semibold mb-1">
+                        <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
                           <EditableField contentKey="insideCenterStat2Label" element="span" defaultSize={12} />
-                          <span className="text-purple-400">95%</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("secondary")} rounded-full`} style={{ width: "95%" }}></div>
+                          <div className={`h-full bg-gradient-to-r ${getGradient("secondary")} rounded-full`} style={{ width: "90%" }}></div>
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-xs font-semibold mb-1">
+                        <div className="flex justify-between text-xs font-semibold mb-1 w-full text-inherit">
                           <EditableField contentKey="insideCenterStat3Label" element="span" defaultSize={12} />
-                          <span className="text-emerald-400">99%</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                           <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "99%" }}></div>
@@ -796,39 +808,33 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás) */}
+                {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES ACADÉMICAS) */}
                 <div className="panel-side-back w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto bg-black/20">
-                  <div>
-                    <EditableField contentKey="contraTitle" element="h3" className="text-xl font-bold tracking-tight mb-6" defaultSize={20} />
-                    
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-sm text-foreground/70">
-                        <Mail className="w-5 h-5 text-foreground/50 shrink-0" />
-                        <EditableField contentKey="contraEmail" element="span" defaultSize={14} />
-                      </div>
-                      <div className="flex items-center gap-3 text-sm text-foreground/70">
-                        <Phone className="w-5 h-5 text-foreground/50 shrink-0" />
-                        <EditableField contentKey="contraPhone" element="span" defaultSize={14} />
-                      </div>
-                      <div className="flex items-center gap-3 text-sm text-foreground/70">
-                        <MapPin className="w-5 h-5 text-foreground/50 shrink-0" />
-                        <EditableField contentKey="contraAddress" element="span" defaultSize={14} />
+                  <div className="my-auto">
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-4 rounded-full bg-gradient-to-br ${getGradient("primary")} shadow-lg shadow-black/20`}>
+                        <GraduationCap className="w-12 h-12 text-white" />
                       </div>
                     </div>
 
-                    {/* QR Code Mockup */}
-                    <div className="mt-8 flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl max-w-[160px] mx-auto">
-                      <div className="w-24 h-24 bg-white p-1 rounded-lg flex items-center justify-center shadow-md">
-                        <div className="w-full h-full grid grid-cols-6 gap-0.5">
-                          {Array.from({ length: 36 }).map((_, i) => (
-                            <div 
-                              key={i} 
-                              className={`rounded-sm ${(i % 3 === 0 || i % 7 === 0 || i < 6 || i % 6 === 0 || i > 30) ? "bg-black" : "bg-transparent"}`}
-                            />
-                          ))}
+                    <EditableField contentKey="contraTitle" element="h3" className="text-2xl font-extrabold tracking-tight text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500" defaultSize={22} />
+                    
+                    <div className="space-y-5 text-center mt-6">
+                      <div className="text-xl font-bold tracking-tight text-foreground/95 border-b border-white/5 pb-3">
+                        <EditableField contentKey="contraEmail" element="div" defaultSize={18} />
+                      </div>
+                      <div className="text-sm font-semibold text-foreground/80">
+                        <EditableField contentKey="contraPhone" element="div" defaultSize={14} />
+                      </div>
+                      <div className="text-sm font-medium text-cyan-400">
+                        <EditableField contentKey="contraAddress" element="div" defaultSize={14} />
+                      </div>
+                      <div className="text-xs text-foreground/50 border-t border-white/10 pt-5 mt-5">
+                        <span className="block mb-2 text-[10px] font-extrabold uppercase tracking-widest text-foreground/40">Asignatura</span>
+                        <div className="font-semibold text-foreground leading-relaxed px-4">
+                          <EditableField contentKey="contraQRLabel" element="div" defaultSize={13} />
                         </div>
                       </div>
-                      <EditableField contentKey="contraQRLabel" element="span" className="text-[10px] text-foreground/40 mt-2 font-mono uppercase tracking-wider" defaultSize={10} />
                     </div>
 
                     {/* Custom added blocks */}
@@ -860,12 +866,12 @@ export default function Home() {
                         <EditableField contentKey="insideRightTag" element="span" defaultSize={12} />
                       </div>
                     </div>
-                    <EditableField contentKey="insideRightTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={24} />
-                    <EditableField contentKey="insideRightDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={14} />
+                    <EditableField contentKey="insideRightTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4" defaultSize={22} />
+                    <EditableField contentKey="insideRightDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-6" defaultSize={13} />
 
                     {/* Testimonial Quote */}
                     <div className="p-4 rounded-2xl bg-white/5 border border-white/5 relative mb-2">
-                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs italic text-foreground/80 leading-relaxed" defaultSize={12} />
+                      <EditableField contentKey="insideRightQuote" element="p" className="text-xs italic text-foreground/85 leading-relaxed" defaultSize={12} />
                       <div className="mt-3 text-right">
                         <EditableField contentKey="insideRightQuoteAuthor" element="span" className="text-[10px] font-bold uppercase tracking-wider text-cyan-400" defaultSize={10} />
                       </div>
@@ -1004,19 +1010,17 @@ export default function Home() {
                       <div>
                         <div className="flex justify-between text-xs mb-1">
                           <EditableField contentKey="insideCenterStat1Label" element="span" defaultSize={12} />
-                          <span className="text-cyan-400">98%</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "98%" }}></div>
+                          <div className={`h-full bg-gradient-to-r ${getGradient("primary")} rounded-full`} style={{ width: "95%" }}></div>
                         </div>
                       </div>
                       <div>
                         <div className="flex justify-between text-xs mb-1">
                           <EditableField contentKey="insideCenterStat2Label" element="span" defaultSize={12} />
-                          <span className="text-purple-400">95%</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className={`h-full bg-gradient-to-r ${getGradient("secondary")} rounded-full`} style={{ width: "95%" }}></div>
+                          <div className={`h-full bg-gradient-to-r ${getGradient("secondary")} rounded-full`} style={{ width: "90%" }}></div>
                         </div>
                       </div>
                     </div>
@@ -1063,19 +1067,25 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Contraportada */}
+                {/* Contraportada (Hoja de enmedio) */}
                 <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
                   <div>
                     <span className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10 float-right font-semibold">ATRÁS</span>
                     <EditableField contentKey="contraTitle" element="h3" className="text-lg font-bold tracking-tight mb-4" defaultSize={18} />
-                    <div className="space-y-3 text-sm">
-                      <div className="flex items-center gap-3">
-                        <Mail className="w-4 h-4 text-foreground/50" />
-                        <EditableField contentKey="contraEmail" element="span" defaultSize={14} />
+                    
+                    <div className="space-y-4 mt-6 text-sm text-foreground/80">
+                      <div className="font-bold border-b border-white/5 pb-2">
+                        <EditableField contentKey="contraEmail" element="div" defaultSize={16} />
                       </div>
-                      <div className="flex items-center gap-3">
-                        <Phone className="w-4 h-4 text-foreground/50" />
-                        <EditableField contentKey="contraPhone" element="span" defaultSize={14} />
+                      <div>
+                        <EditableField contentKey="contraPhone" element="div" defaultSize={14} />
+                      </div>
+                      <div className="text-cyan-400 font-medium">
+                        <EditableField contentKey="contraAddress" element="div" defaultSize={14} />
+                      </div>
+                      <div className="text-xs text-foreground/50 border-t border-white/10 pt-4 mt-4">
+                        <span className="block mb-1 text-[9px] font-bold uppercase tracking-wider text-foreground/40">Asignatura</span>
+                        <EditableField contentKey="contraQRLabel" element="div" defaultSize={12} />
                       </div>
                     </div>
 
@@ -1090,15 +1100,6 @@ export default function Home() {
                     <EditableField contentKey="solapaTag" element="span" className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10 float-right" defaultSize={10} />
                     <EditableField contentKey="solapaTitle" element="h3" className="text-lg font-bold tracking-tight mb-2" defaultSize={18} />
                     <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-4" defaultSize={14} />
-                    <input 
-                      type="email" 
-                      placeholder="Tu correo" 
-                      className="w-full px-4 py-2 bg-white/5 border border-white/10 text-sm rounded-lg mb-2 focus:outline-none"
-                      disabled
-                    />
-                    <button className={`w-full py-2 rounded-lg text-xs font-semibold bg-gradient-to-r ${getGradient("primary")} text-white`}>
-                      <EditableField contentKey="solapaButton" element="span" defaultSize={12} />
-                    </button>
 
                     {/* Custom Blocks */}
                     {renderCustomBlocks("solapa")}
