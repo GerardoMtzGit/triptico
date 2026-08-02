@@ -214,12 +214,13 @@ body {
 
   .print-page {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 1.5rem !important;
     page-break-after: always !important;
     height: 100vh !important;
     box-sizing: border-box !important;
-    padding: 2.5rem !important;
+    padding: 2rem !important;
     background: #09090b !important;
+    overflow: hidden !important;
   }
 }

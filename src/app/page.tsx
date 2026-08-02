@@ -32,6 +32,7 @@ interface BrochureContent {
   portadaSubtitle: string;
   portadaTag: string;
   portadaEdition: string;
+  portadaImage: string;
   
   // Contraportada (Outside Center) -> Credenciales UVM
   contraTitle: string;
@@ -39,12 +40,14 @@ interface BrochureContent {
   contraPhone: string; // Used for Program Name
   contraAddress: string; // Used for University Name
   contraQRLabel: string; // Used for Course Name
+  contraImage: string;
   
   // Solapa (Outside Left) -> Análisis del consumidor
   solapaTag: string;
   solapaTitle: string;
   solapaDesc: string;
   solapaButton: string;
+  solapaImage: string;
 
   // Inside Left (Pag 1) -> Análisis de la competencia
   insideLeftTag: string;
@@ -54,6 +57,7 @@ interface BrochureContent {
   insideLeftBullet1Desc: string;
   insideLeftBullet2Title: string;
   insideLeftBullet2Desc: string;
+  insideLeftImage: string;
 
   // Inside Center (Pag 2) -> Previsión de la demanda
   insideCenterTag: string;
@@ -62,6 +66,7 @@ interface BrochureContent {
   insideCenterStat1Label: string;
   insideCenterStat2Label: string;
   insideCenterStat3Label: string;
+  insideCenterImage: string;
 
   // Inside Right (Pag 3) -> El plan de comercialización
   insideRightTag: string;
@@ -69,6 +74,7 @@ interface BrochureContent {
   insideRightDesc: string;
   insideRightQuote: string;
   insideRightQuoteAuthor: string;
+  insideRightImage: string;
 }
 
 interface CustomBlock {
@@ -94,7 +100,8 @@ export default function Home() {
     portadaTag: "Etapa 1 - Estudio de Mercado",
     portadaTitle: "Definición del bien a producir",
     portadaSubtitle: "La definición del bien o servicio es la piedra angular sobre la cual se edifica cualquier estudio de mercado y evaluación financiera. Consiste en la caracterización y descripción detallada de todas las propiedades físicas, químicas, técnicas y funcionales del producto o servicio que se pretende introducir en el mercado. Esto permite al evaluador de proyectos delimitar el alcance técnico del proceso de producción y prever los insumos, maquinaria e infraestructura necesarios para su desarrollo comercial de manera rigurosa.",
-    portadaEdition: "CARACTERÍSTICAS METODOLÓGICAS:\n1. Especificaciones Técnicas y de Diseño: Incluye dimensiones, peso, materiales de composición (plásticos, metales, componentes electrónicos), empaque (primario, secundario, terciario) y ciclo de vida estimado.\n2. Propuesta de Valor y Usos: Se debe responder a la pregunta fundamental de qué problema resuelve o qué necesidad satisface. Describe la diferenciación competitiva y el valor agregado intangible que percibirá el cliente.\n3. Aspectos Regulatorios y Propiedad Intelectual: Normas oficiales de calidad (NOM, ISO), registros sanitarios (FDA, COFEPRIS), marcas registradas, patentes de invención y regulaciones ambientales obligatorias para su venta.\n\nEJEMPLO DE APLICACIÓN PRÁCTICA:\nCaso - Dispositivo IoT 'EcoTemp v2': Un termostato inteligente doméstico fabricado con aluminio reciclado y vidrio templado, con dimensiones de 10x10 cm. Cuenta con sensores de temperatura, humedad y presencia, y conectividad Wi-Fi dual. Su propuesta de valor es el ahorro automático de hasta un 30% en consumo eléctrico residencial gracias a un algoritmo predictivo de IA. Legalmente, cuenta con certificación internacional de seguridad eléctrica, patente del algoritmo registrada ante la oficina de propiedad intelectual y empaque biodegradable de cartón prensado con instructivo digital.",
+    portadaEdition: "CARACTERÍSTICAS METODOLÓGICAS:\n1. Especificaciones Técnicas y de Diseño: Incluye dimensiones, peso, materiales de composición (plásticos, metals, componentes electrónicos), empaque (primario, secundario, terciario) y ciclo de vida estimado.\n2. Propuesta de Valor y Usos: Se debe responder a la pregunta fundamental de qué problema resuelve o qué necesidad satisface. Describe la diferenciación competitiva y el valor agregado intangible que percibirá el cliente.\n3. Aspectos Regulatorios y Propiedad Intelectual: Normas oficiales de calidad (NOM, ISO), registros sanitarios (FDA, COFEPRIS), marcas registradas, patentes de invención y regulaciones ambientales obligatorias para su venta.\n\nEJEMPLO DE APLICACIÓN PRÁCTICA:\nCaso - Dispositivo IoT 'EcoTemp v2': Un termostato inteligente doméstico fabricado con aluminio reciclado y vidrio templado, con dimensiones de 10x10 cm. Cuenta con sensores de temperatura, humedad y presencia, y conectividad Wi-Fi dual. Su propuesta de valor es el ahorro automático de hasta un 30% en consumo eléctrico residencial gracias a un algoritmo predictivo de IA. Legalmente, cuenta con certificación internacional de seguridad eléctrica, patente del algoritmo registrada ante la oficina de propiedad intelectual y empaque biodegradable de cartón prensado con instructivo digital.",
+    portadaImage: "/images/product_definition.png",
     
     // Cara Exterior - Contraportada (Centro) -> Credenciales UVM
     contraTitle: "Actividad 1. Infografía",
@@ -102,12 +109,14 @@ export default function Home() {
     contraPhone: "Maestría en Inteligencia Artificial",
     contraAddress: "Universidad del Valle de México (UVM)",
     contraQRLabel: "Evaluación financiera y análisis de costos y riesgos",
+    contraImage: "/images/academic_credentials.png",
     
     // Cara Exterior - Solapa Interna (Izquierda) -> Análisis del consumidor
     solapaTag: "Etapa 2",
     solapaTitle: "Análisis del consumidor",
     solapaDesc: "El análisis del consumidor investiga los patrones de comportamiento de compra y consumo del público objetivo para estructurar estrategias comerciales eficaces. En el diseño de proyectos, este análisis ayuda a cuantificar el tamaño de la demanda potencial y a entender qué variables influyen en la toma de decisiones del consumidor final.",
     solapaButton: "CARACTERÍSTICAS METODOLÓGICAS:\n1. Segmentación del Mercado: Proceso de fragmentar el mercado en grupos homogéneos basados en criterios demográficos (edad, ingresos, ocupación), geográficos (localización, clima), psicográficos (personalidad, estilo de vida, valores) y conductuales (frecuencia de uso, beneficios buscados, lealtad de marca).\n2. Perfil del Consumidor (Buyer Persona): Arquetipo semificticio que describe al cliente ideal, detallando sus objetivos diarios, frustraciones con soluciones actuales y motivaciones de compra.\n3. Proceso y Hábitos de Compra: Estudio de los roles en la compra (iniciador, influyente, decisor, comprador, usuario), la frecuencia de compra, los canales preferidos de información y los disparadores de decisión.\n\nEJEMPLO DE APLICACIÓN PRÁCTICA:\nCaso - Consumidor de Plataforma SaaS de Gestión Escolar: El cliente decisor se segmenta como Directores de Colegios Privados en zonas urbanas de ingresos medios, de 35 a 60 años, con conocimientos tecnológicos básicos. El buyer persona representativo es 'Director Carlos', cuyas frustraciones son la pérdida de tiempo en reportes de asistencia manuales y la comunicación ineficiente con los padres. Su disparador de compra es la necesidad de digitalizar la administración del plantel para retener matrícula y proyectar una imagen de vanguardia educativa.",
+    solapaImage: "/images/consumer_analysis.png",
 
     // Inside Left (Página 1) -> Análisis de la competencia
     insideLeftTag: "Etapa 3",
@@ -117,6 +126,7 @@ export default function Home() {
     insideLeftBullet1Desc: "1. Benchmarking Competitivo: Comparativa técnica de atributos (calidad de materiales, facilidad de uso, soporte técnico, tiempo de entrega, garantías) frente a los líderes del sector.\n2. Estructura de Precios y Costos: Análisis de las políticas de precios de los competidores, márgenes de intermediación, esquemas de crédito y promociones especiales.\n3. Identificación de Barreras de Entrada y Salida: Evaluación de obstáculos del mercado como patentes dominantes, economías de escala de grandes cadenas, contratos exclusivos de distribución y altos costos de cambio para el cliente.",
     insideLeftBullet2Title: "Ejemplo Práctico:",
     insideLeftBullet2Desc: "Caso - Empresa de Delivery Local frente a Gigantes (UberEats/Rappi): La competencia directa posee economías de escala y gran presupuesto publicitario, pero su debilidad es la alta tasa de comisión (hasta 30%) cobrada a los restaurantes locales y el soporte automatizado ineficiente. La nueva empresa local decide diferenciarse ofreciendo una comisión reducida del 15%, un canal de soporte telefónico directo para restaurantes y repartidores locales contratados formalmente, asegurando una atención premium y comunitaria.",
+    insideLeftImage: "/images/competition_analysis.png",
 
     // Inside Center (Página 2) -> Previsión de la demanda
     insideCenterTag: "Etapa 4",
@@ -125,6 +135,7 @@ export default function Home() {
     insideCenterStat1Label: "Métodos Cualitativos: Se aplican cuando los datos históricos son escasos (por ejemplo, en el lanzamiento de un producto innovador). Incluyen encuestas de intención de compra de consumidores potenciales, consulta a paneles de vendedores y el Método Delphi (consenso de expertos mediante rondas de preguntas anónimas).",
     insideCenterStat2Label: "Métodos Cuantitativos: Modelos de series de tiempo (promedios móviles, suavizamiento exponencial) que proyectan basándose en el comportamiento histórico del mercado, y modelos causales (regresiones lineales simples o múltiples) que asocian la demanda con variables externas explicativas.",
     insideCenterStat3Label: "EJEMPLO: Caso - Alimento Orgánico de Mascotas: Se realiza un modelo causal donde la variable independiente es la tasa de adopción de mascotas de raza pequeña en la región y el crecimiento del gasto promedio en bienestar animal. El modelo de regresión lineal simple ($Y = a + bX$) proyecta una demanda de 12,000 unidades para el primer año de operación, con una tasa de crecimiento anual sostenida del 8.5% en función de la tendencia de humanización de las mascotas.",
+    insideCenterImage: "/images/demand_forecasting.png",
 
     // Inside Right (Página 3) -> El plan de comercialización
     insideRightTag: "Etapa 5",
@@ -132,6 +143,7 @@ export default function Home() {
     insideRightDesc: "El plan de comercialización define la estrategia integrada para hacer llegar el producto o servicio al público objetivo en el momento, lugar y precio correctos, motivando la compra a través de canales de comunicación eficaces. Es la ejecución comercial del proyecto y la interfaz directa con el mercado.",
     insideRightQuote: "El Marketing Mix (Las 4Ps): Producto (portafolio de productos, diseño de la marca, empaque y políticas de garantías y servicio postventa), Precio (fijación del precio basada en costos [markup], precios de la competencia o valor percibido), Plaza (canales directos [venta web, tiendas propias] o indirectos [mayoristas, detallistas]) y Promoción (publicidad digital [SEO, SEM, redes sociales], relaciones públicas y marketing de influencia).",
     insideRightQuoteAuthor: "EJEMPLO: Caso - Marca de Cosméticos Orgánicos Veganos: El plan establece un catálogo de cremas faciales en envases de vidrio retornable (Producto). El precio se fija por valor percibido un 15% arriba del mercado tradicional para proyectar exclusividad y cubrir costos de ingredientes orgánicos certificados (Precio). La plaza inicial se enfoca en canales digitales propios (e-commerce Shopify) y distribución física selectiva en 10 boutiques ecológicas aliadas (Plaza). La promoción se apoya en publicidad pagada en Instagram y TikTok enfocada en sustentabilidad, y colaboraciones con influencers del movimiento cruelty-free (Promoción).",
+    insideRightImage: "/images/marketing_plan.png",
   });
 
   // Default font sizes map (key -> size in pixels)
@@ -309,6 +321,96 @@ export default function Home() {
         >
           {value}
         </Element>
+      </div>
+    );
+  };
+
+  // Helper component to render and edit main panel images
+  const EditableImage = ({ 
+    contentKey, 
+    alt, 
+    className = "", 
+    defaultHeight = 128,
+    isRound = false,
+  }: { 
+    contentKey: keyof BrochureContent; 
+    alt: string; 
+    className?: string; 
+    defaultHeight?: number;
+    isRound?: boolean;
+  }) => {
+    const imageUrl = content[contentKey];
+    const [imageHeight, setImageHeight] = useState<number>(defaultHeight);
+
+    const handleUpload = (file: File) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        if (result) {
+          updateText(contentKey, result);
+        }
+      };
+      reader.readAsDataURL(file);
+    };
+
+    return (
+      <div className={`relative group/img-editable w-full flex justify-center mb-4 ${isEditing ? "z-30" : ""}`}>
+        <img 
+          src={imageUrl} 
+          alt={alt} 
+          style={{ height: isRound ? `${imageHeight}px` : undefined, maxHeight: isRound ? undefined : `${imageHeight}px` }}
+          className={`${className} ${isRound ? "w-auto object-cover" : "w-full object-cover"} ${
+            isEditing 
+              ? "outline-dashed outline-2 outline-cyan-500/70 cursor-pointer hover:brightness-90 transition-all" 
+              : "transition-all duration-300"
+          }`}
+        />
+        
+        {isEditing && (
+          <div className={`absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-1 opacity-0 group-hover/img-editable:opacity-100 transition-opacity duration-200 z-30 ${isRound ? "rounded-full" : "rounded-xl"}`}>
+            {/* Height slider control */}
+            <div className="absolute -top-7 left-0 right-0 mx-auto w-max flex items-center gap-1.5 bg-zinc-950 border border-white/10 px-2 py-0.5 rounded-lg shadow-lg z-30 select-none">
+              <span className="text-[9px] text-foreground/50">Altura:</span>
+              <input 
+                type="range" 
+                min="60" 
+                max="350" 
+                value={imageHeight} 
+                onChange={(e) => setImageHeight(parseInt(e.target.value))}
+                className="w-14 h-1 bg-white/20 rounded cursor-pointer accent-cyan-400"
+              />
+              <span className="text-[9px] font-mono text-cyan-400">{imageHeight}px</span>
+            </div>
+
+            {/* Upload action */}
+            <div 
+              className={`${isRound ? "w-[75%] h-[75%] rounded-full" : "w-[85%] h-[80%] rounded-lg"} border border-dashed border-white/30 flex flex-col items-center justify-center p-2 cursor-pointer hover:border-cyan-400 hover:bg-white/5 transition`}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => {
+                e.preventDefault();
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith("image/")) {
+                  handleUpload(file);
+                }
+              }}
+              onClick={() => {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.accept = "image/*";
+                input.onchange = (e) => {
+                  const file = (e.target as HTMLInputElement).files?.[0];
+                  if (file) {
+                    handleUpload(file);
+                  }
+                };
+                input.click();
+              }}
+            >
+              <ImageIcon className="w-5 h-5 text-white/70 mb-1" />
+              <span className="text-[9px] text-white/80 text-center font-medium">Sube o arrastra imagen</span>
+            </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -700,10 +802,13 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    {/* SVG Illustration: Competencia */}
-                    <svg className="w-16 h-16 text-amber-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
-                    </svg>
+                    {/* Descriptive Image: Competencia */}
+                    <EditableImage 
+                      contentKey="insideLeftImage" 
+                      alt="Análisis de la competencia" 
+                      className="rounded-xl border border-white/10" 
+                      defaultHeight={128} 
+                    />
 
                     <EditableField contentKey="insideLeftTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                     <EditableField contentKey="insideLeftDesc" element="p" className="text-xs text-foreground/70 leading-relaxed mb-6" defaultSize={12} />
@@ -748,10 +853,13 @@ export default function Home() {
                         </div>
                       </div>
 
-                      {/* SVG Illustration: Consumidor */}
-                      <svg className="w-16 h-16 text-purple-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                      </svg>
+                      {/* Descriptive Image: Consumidor */}
+                      <EditableImage 
+                        contentKey="solapaImage" 
+                        alt="Análisis del consumidor" 
+                        className="rounded-xl border border-white/10" 
+                        defaultHeight={128} 
+                      />
 
                       <EditableField contentKey="solapaTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                       <EditableField contentKey="solapaDesc" element="p" className="text-[11px] text-foreground/70 leading-relaxed mb-6" defaultSize={11} />
@@ -790,10 +898,13 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {/* SVG Illustration: Demanda */}
-                    <svg className="w-16 h-16 text-emerald-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.281m5.94 2.28-2.28 5.941" />
-                    </svg>
+                    {/* Descriptive Image: Demanda */}
+                    <EditableImage 
+                      contentKey="insideCenterImage" 
+                      alt="Previsión de la demanda" 
+                      className="rounded-xl border border-white/10" 
+                      defaultHeight={128} 
+                    />
 
                     <EditableField contentKey="insideCenterTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                     <EditableField contentKey="insideCenterDesc" element="p" className="text-[11px] text-foreground/70 leading-relaxed mb-6" defaultSize={11} />
@@ -834,11 +945,13 @@ export default function Home() {
                 {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES UVM & APA REFERENCES) */}
                 <div className={`panel-side-back w-full h-full glass-panel p-6 flex flex-col justify-between overflow-y-auto bg-black/25 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <div>
-                    <div className="flex justify-center mb-3">
-                      <div className={`p-2.5 rounded-full bg-gradient-to-br ${getGradient("primary")} shadow-lg shadow-black/20`}>
-                        <GraduationCap className="w-8 h-8 text-white" />
-                      </div>
-                    </div>
+                    <EditableImage 
+                      contentKey="contraImage" 
+                      alt="Credenciales académicas" 
+                      className="rounded-full border border-white/10 shadow-lg shadow-purple-500/10" 
+                      defaultHeight={80} 
+                      isRound={true} 
+                    />
 
                     <EditableField contentKey="contraTitle" element="h3" className="text-lg font-bold tracking-tight text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500" defaultSize={16} />
                     
@@ -890,10 +1003,13 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {/* SVG Illustration: Comercialización */}
-                    <svg className="w-16 h-16 text-cyan-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.22.927a3.75 3.75 0 005.13 2.19l.221-.096m-7.29-9.529l.067.284a3.75 3.75 0 004.912 2.697l.065-.022M9 10.5h.008V10.5H9zm6 3h.008v.008H15V13.5zm-6-3a2.25 2.25 0 00-2.25 2.25v1.318a2.25 2.25 0 002.25 2.25H15a2.25 2.25 0 002.25-2.25v-1.318a2.25 2.25 0 00-2.25-2.25H9z" />
-                    </svg>
+                    {/* Descriptive Image: Comercialización */}
+                    <EditableImage 
+                      contentKey="insideRightImage" 
+                      alt="Plan de comercialización" 
+                      className="rounded-xl border border-white/10" 
+                      defaultHeight={128} 
+                    />
 
                     <EditableField contentKey="insideRightTitle" element="h3" className="text-2xl font-bold tracking-tight mb-4 text-center" defaultSize={22} />
                     <EditableField contentKey="insideRightDesc" element="p" className="text-[11px] text-foreground/70 leading-relaxed mb-6" defaultSize={11} />
@@ -933,10 +1049,13 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {/* SVG Illustration: Diseño del Bien */}
-                    <svg className="w-20 h-20 text-cyan-400 mx-auto my-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                    </svg>
+                    {/* Descriptive Image: Portada */}
+                    <EditableImage 
+                      contentKey="portadaImage" 
+                      alt="Definición del bien a producir" 
+                      className="rounded-xl border border-white/10 shadow-lg shadow-cyan-500/10" 
+                      defaultHeight={144} 
+                    />
 
                     <div className="my-auto py-4 text-center">
                       <EditableField contentKey="portadaTitle" element="h2" className="text-3xl font-extrabold tracking-tight leading-tight mb-3" defaultSize={26} />
@@ -1025,6 +1144,7 @@ export default function Home() {
                       <EditableField contentKey="insideLeftTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideLeftTitle" element="h3" className="text-xl font-bold tracking-tight mb-2" defaultSize={20} />
+                    <img src={content.insideLeftImage} alt="Análisis de la competencia" className="w-full h-32 object-cover rounded-xl border border-white/10 mb-4" />
                     <EditableField contentKey="insideLeftDesc" element="p" className="text-xs text-foreground/70 leading-relaxed mb-4" defaultSize={12} />
                     <div className="space-y-2">
                       <EditableField contentKey="insideLeftBullet1Title" element="h4" className="text-sm font-semibold" defaultSize={14} />
@@ -1044,6 +1164,7 @@ export default function Home() {
                       <EditableField contentKey="insideCenterTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideCenterTitle" element="h3" className="text-xl font-bold tracking-tight mb-4" defaultSize={20} />
+                    <img src={content.insideCenterImage} alt="Previsión de la demanda" className="w-full h-32 object-cover rounded-xl border border-white/10 mb-4" />
                     <EditableField contentKey="insideCenterDesc" element="p" className="text-xs text-foreground/70 mb-4 leading-relaxed" defaultSize={11} />
                     <div className="space-y-2">
                       <EditableField contentKey="insideCenterStat1Label" element="div" className="text-[11px] text-foreground/80 leading-relaxed" defaultSize={11} />
@@ -1063,6 +1184,7 @@ export default function Home() {
                       <EditableField contentKey="insideRightTag" element="span" defaultSize={12} />
                     </div>
                     <EditableField contentKey="insideRightTitle" element="h3" className="text-xl font-bold tracking-tight mb-2" defaultSize={20} />
+                    <img src={content.insideRightImage} alt="Plan de comercialización" className="w-full h-32 object-cover rounded-xl border border-white/10 mb-4" />
                     <EditableField contentKey="insideRightDesc" element="p" className="text-xs text-foreground/70 leading-relaxed mb-4" defaultSize={11} />
                     <div className="p-4 rounded-xl bg-white/5 border border-white/5 mb-3">
                       <EditableField contentKey="insideRightQuote" element="p" className="text-xs italic text-foreground/85 leading-relaxed" defaultSize={11} />
@@ -1084,6 +1206,7 @@ export default function Home() {
                   </div>
                   <div className="my-auto py-6">
                     <EditableField contentKey="portadaTitle" element="h2" className="text-2xl font-extrabold tracking-tight leading-tight mb-2" defaultSize={26} />
+                    <img src={content.portadaImage} alt="Definición del bien" className="w-full h-32 object-cover rounded-xl border border-white/10 mb-4" />
                     <EditableField contentKey="portadaSubtitle" element="p" className="text-xs text-foreground/60 leading-relaxed" defaultSize={12} />
                     <EditableField contentKey="portadaEdition" element="p" className="text-[11px] text-cyan-400/90 italic mt-2 whitespace-pre-line" defaultSize={11} />
                     
@@ -1097,6 +1220,9 @@ export default function Home() {
                   <div>
                     <span className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10 float-right font-semibold">ATRÁS</span>
                     <EditableField contentKey="contraTitle" element="h3" className="text-lg font-bold tracking-tight mb-4" defaultSize={18} />
+                    <div className="flex justify-center mb-4">
+                      <img src={content.contraImage} alt="Credenciales académicas" className="w-16 h-16 object-cover rounded-full border border-white/10 shadow-lg shadow-purple-500/10" />
+                    </div>
                     
                     <div className="space-y-4 mt-6 text-sm text-foreground/80">
                       <div className="font-bold border-b border-white/5 pb-2">
@@ -1124,6 +1250,7 @@ export default function Home() {
                   <div>
                     <EditableField contentKey="solapaTag" element="span" className="text-[10px] font-mono opacity-50 px-2 py-0.5 rounded border border-white/10 float-right" defaultSize={10} />
                     <EditableField contentKey="solapaTitle" element="h3" className="text-lg font-bold tracking-tight mb-2" defaultSize={18} />
+                    <img src={content.solapaImage} alt="Análisis del consumidor" className="w-full h-32 object-cover rounded-xl border border-white/10 mb-4" />
                     <EditableField contentKey="solapaDesc" element="p" className="text-sm text-foreground/70 leading-relaxed mb-4" defaultSize={14} />
                     <EditableField contentKey="solapaButton" element="p" className="text-xs text-foreground/60 italic leading-relaxed mt-2 whitespace-pre-line" defaultSize={12} />
 
@@ -1145,50 +1272,53 @@ export default function Home() {
         <div className="print-page w-full h-[100vh] grid grid-cols-3 gap-6 p-8 bg-[#09090b]" style={{ pageBreakAfter: "always" }}>
           
           {/* Panel 1: Análisis de la Competencia */}
-          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+          <div className="border border-white/10 rounded-2xl p-4 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md overflow-hidden">
             <div>
               <div className="text-[10px] uppercase font-bold tracking-widest text-amber-400 mb-2">Etapa 3 - Cara Interna</div>
-              <h3 className="text-xl font-bold text-white mb-4">Análisis de la competencia</h3>
-              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.insideLeftDesc}</p>
-              <div className="border-t border-white/10 pt-3 mt-3">
-                <h4 className="text-xs font-bold text-white mb-1">{content.insideLeftBullet1Title}</h4>
-                <p className="text-[9px] text-zinc-400 leading-relaxed whitespace-pre-line">{content.insideLeftBullet1Desc}</p>
+              <h3 className="text-lg font-bold text-white mb-2">Análisis de la competencia</h3>
+              <img src={content.insideLeftImage} alt="Análisis de la competencia" className="w-full h-20 object-cover rounded-xl border border-white/10 mb-3" />
+              <p className="text-[9px] text-zinc-300 mb-3 leading-relaxed whitespace-pre-line">{content.insideLeftDesc}</p>
+              <div className="border-t border-white/10 pt-2 mt-2">
+                <h4 className="text-[10px] font-bold text-white mb-0.5">{content.insideLeftBullet1Title}</h4>
+                <p className="text-[8px] text-zinc-400 leading-relaxed whitespace-pre-line">{content.insideLeftBullet1Desc}</p>
               </div>
-              <div className="border-t border-white/10 pt-3 mt-3">
-                <h4 className="text-xs font-bold text-white mb-1">{content.insideLeftBullet2Title}</h4>
-                <p className="text-[9px] text-zinc-400 leading-relaxed whitespace-pre-line">{content.insideLeftBullet2Desc}</p>
+              <div className="border-t border-white/10 pt-2 mt-2">
+                <h4 className="text-[10px] font-bold text-white mb-0.5">{content.insideLeftBullet2Title}</h4>
+                <p className="text-[8px] text-zinc-400 leading-relaxed whitespace-pre-line">{content.insideLeftBullet2Desc}</p>
               </div>
             </div>
-            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Pág 1 / Cara Interna</div>
+            <div className="text-[8px] text-zinc-500 font-mono border-t border-white/10 pt-1 mt-2">Pág 1 / Cara Interna</div>
           </div>
 
           {/* Panel 2: Previsión de la Demanda */}
-          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+          <div className="border border-white/10 rounded-2xl p-4 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md overflow-hidden">
             <div>
               <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-400 mb-2">Etapa 4 - Cara Interna</div>
-              <h3 className="text-xl font-bold text-white mb-4">Previsión de la demanda</h3>
-              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.insideCenterDesc}</p>
-              <div className="space-y-3 border-t border-white/10 pt-3 mt-3">
-                <p className="text-[9px] text-zinc-400 leading-relaxed"><span className="font-bold text-white">Cualitativo:</span> {content.insideCenterStat1Label}</p>
-                <p className="text-[9px] text-zinc-400 leading-relaxed"><span className="font-bold text-white">Cuantitativo:</span> {content.insideCenterStat2Label}</p>
-                <p className="text-[9px] text-cyan-300 font-semibold italic bg-white/5 p-3 rounded-xl border border-white/5">{content.insideCenterStat3Label}</p>
+              <h3 className="text-lg font-bold text-white mb-2">Previsión de la demanda</h3>
+              <img src={content.insideCenterImage} alt="Previsión de la demanda" className="w-full h-20 object-cover rounded-xl border border-white/10 mb-3" />
+              <p className="text-[9px] text-zinc-300 mb-3 leading-relaxed whitespace-pre-line">{content.insideCenterDesc}</p>
+              <div className="space-y-2 border-t border-white/10 pt-2 mt-2">
+                <p className="text-[8px] text-zinc-400 leading-relaxed"><span className="font-bold text-white">Cualitativo:</span> {content.insideCenterStat1Label}</p>
+                <p className="text-[8px] text-zinc-400 leading-relaxed"><span className="font-bold text-white">Cuantitativo:</span> {content.insideCenterStat2Label}</p>
+                <p className="text-[8px] text-cyan-300 font-semibold italic bg-white/5 p-2 rounded-lg border border-white/5">{content.insideCenterStat3Label}</p>
               </div>
             </div>
-            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Pág 2 / Cara Interna</div>
+            <div className="text-[8px] text-zinc-500 font-mono border-t border-white/10 pt-1 mt-2">Pág 2 / Cara Interna</div>
           </div>
 
           {/* Panel 3: El Plan de Comercialización */}
-          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+          <div className="border border-white/10 rounded-2xl p-4 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md overflow-hidden">
             <div>
               <div className="text-[10px] uppercase font-bold tracking-widest text-cyan-400 mb-2">Etapa 5 - Cara Interna</div>
-              <h3 className="text-xl font-bold text-white mb-4">El plan de comercialización</h3>
-              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.insideRightDesc}</p>
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                <p className="text-[9px] text-zinc-200 leading-relaxed font-medium mb-2">{content.insideRightQuote}</p>
-                <p className="text-[8px] text-cyan-400 font-bold text-right italic">{content.insideRightQuoteAuthor}</p>
+              <h3 className="text-lg font-bold text-white mb-2">El plan de comercialización</h3>
+              <img src={content.insideRightImage} alt="Plan de comercialización" className="w-full h-20 object-cover rounded-xl border border-white/10 mb-3" />
+              <p className="text-[9px] text-zinc-300 mb-3 leading-relaxed whitespace-pre-line">{content.insideRightDesc}</p>
+              <div className="bg-white/5 p-3 rounded-lg border border-white/10">
+                <p className="text-[8px] text-zinc-200 leading-relaxed font-medium mb-1">{content.insideRightQuote}</p>
+                <p className="text-[7px] text-cyan-400 font-bold text-right italic">{content.insideRightQuoteAuthor}</p>
               </div>
             </div>
-            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Pág 3 / Cara Interna</div>
+            <div className="text-[8px] text-zinc-500 font-mono border-t border-white/10 pt-1 mt-2">Pág 3 / Cara Interna</div>
           </div>
         </div>
 
@@ -1196,45 +1326,50 @@ export default function Home() {
         <div className="print-page w-full h-[100vh] grid grid-cols-3 gap-6 p-8 bg-[#09090b]">
           
           {/* Panel 1: Solapa - Análisis del Consumidor */}
-          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+          <div className="border border-white/10 rounded-2xl p-4 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md overflow-hidden">
             <div>
               <div className="text-[10px] uppercase font-bold tracking-widest text-purple-400 mb-2">Etapa 2 - Solapa Interna</div>
-              <h3 className="text-xl font-bold text-white mb-4">Análisis del consumidor</h3>
-              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed whitespace-pre-line">{content.solapaDesc}</p>
-              <p className="text-[9px] text-zinc-400 italic border-l-2 border-purple-500/50 pl-3 mt-4 whitespace-pre-line">{content.solapaButton}</p>
+              <h3 className="text-lg font-bold text-white mb-2">Análisis del consumidor</h3>
+              <img src={content.solapaImage} alt="Análisis del consumidor" className="w-full h-20 object-cover rounded-xl border border-white/10 mb-3" />
+              <p className="text-[9px] text-zinc-300 mb-3 leading-relaxed whitespace-pre-line">{content.solapaDesc}</p>
+              <p className="text-[8px] text-zinc-400 italic border-l-2 border-purple-500/50 pl-2 mt-2 whitespace-pre-line">{content.solapaButton}</p>
             </div>
-            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Solapa / Cara Externa</div>
+            <div className="text-[8px] text-zinc-500 font-mono border-t border-white/10 pt-1 mt-2">Solapa / Cara Externa</div>
           </div>
 
           {/* Panel 2: Contraportada - Credenciales UVM y Referencias */}
-          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md text-center">
+          <div className="border border-white/10 rounded-2xl p-4 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md text-center overflow-hidden">
             <div>
-              <h3 className="text-lg font-bold text-white mb-1">{content.contraTitle}</h3>
-              <p className="text-xs font-extrabold text-white">{content.contraEmail}</p>
-              <p className="text-[10px] text-zinc-300">{content.contraPhone}</p>
-              <p className="text-[10px] text-cyan-400 font-semibold mb-2">{content.contraAddress}</p>
-              <p className="text-[9px] text-zinc-500 border-t border-white/10 pt-1 mt-1 mb-4">{content.contraQRLabel}</p>
+              <div className="flex justify-center mb-2">
+                <img src={content.contraImage} alt="Credenciales académicas" className="w-12 h-12 object-cover rounded-full border border-white/10 shadow-md" />
+              </div>
+              <h3 className="text-sm font-bold text-white mb-0.5">{content.contraTitle}</h3>
+              <p className="text-[10px] font-extrabold text-white">{content.contraEmail}</p>
+              <p className="text-[9px] text-zinc-300">{content.contraPhone}</p>
+              <p className="text-[9px] text-cyan-400 font-semibold mb-1">{content.contraAddress}</p>
+              <p className="text-[8px] text-zinc-500 border-t border-white/10 pt-1 mt-1 mb-2">{content.contraQRLabel}</p>
               
               {/* Referencias APA */}
-              <div className="text-left border-t border-white/10 pt-3">
-                <h4 className="text-[10px] font-bold text-white mb-2">Referencias Bibliográficas (APA):</h4>
-                <p className="text-[8px] text-zinc-400 leading-relaxed mb-2">Meza, J. (2013). Evaluación financiera de proyectos: 10 casos prácticos resueltos en Excel. [Archivo PDF]. Recuperado de http://190.57.147.202:90/jspui/bitstream/123456789/1402/1/Evaluaci%C3%B3n%20financiera%20de%20proyectos.pdf</p>
-                <p className="text-[8px] text-zinc-400 leading-relaxed">Mondragon, D. (2017). Formulación y evaluación de proyectos. [Archivo PDF]. Recuperado de https://digitk.areandina.edu.co/bitstream/handle/areandina/1318/Formulaci%C3%B3n%20y%20Evaluaci%C3%B3n%20de%20Proyectos.pdf?sequence=1</p>
+              <div className="text-left border-t border-white/10 pt-2">
+                <h4 className="text-[9px] font-bold text-white mb-1">Referencias Bibliográficas (APA):</h4>
+                <p className="text-[7.5px] text-zinc-400 leading-normal mb-1">Meza, J. (2013). Evaluación financiera de proyectos: 10 casos prácticos resueltos en Excel. [Archivo PDF]. Recuperado de http://190.57.147.202:90/jspui/bitstream/123456789/1402/1/Evaluaci%C3%B3n%20financiera%20de%20proyectos.pdf</p>
+                <p className="text-[7.5px] text-zinc-400 leading-normal">Mondragon, D. (2017). Formulación y evaluación de proyectos. [Archivo PDF]. Recuperado de https://digitk.areandina.edu.co/bitstream/handle/areandina/1318/Formulaci%C3%B3n%20y%20Evaluaci%C3%B3n%20de%20Proyectos.pdf?sequence=1</p>
               </div>
             </div>
-            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4 text-left">Contraportada / Cara Externa</div>
+            <div className="text-[8px] text-zinc-500 font-mono border-t border-white/10 pt-1 mt-2 text-left">Contraportada / Cara Externa</div>
           </div>
 
           {/* Panel 3: Portada - Definición del Bien */}
-          <div className="border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md">
+          <div className="border border-white/10 rounded-2xl p-4 flex flex-col justify-between h-full bg-white/5 backdrop-blur-md overflow-hidden">
             <div>
               <div className="text-[10px] uppercase font-bold tracking-widest text-cyan-400 mb-2">Etapa 1 - Portada Principal</div>
-              <h2 className="text-2xl font-extrabold text-white mb-3">{content.portadaTitle}</h2>
-              <div className="w-12 h-1 bg-cyan-400 mb-4 rounded-full"></div>
-              <p className="text-[10px] text-zinc-300 mb-4 leading-relaxed">{content.portadaSubtitle}</p>
-              <p className="text-[9px] text-zinc-400 border-t border-white/10 pt-3 mt-3 whitespace-pre-line text-left leading-relaxed">{content.portadaEdition}</p>
+              <h2 className="text-xl font-extrabold text-white mb-2">{content.portadaTitle}</h2>
+              <div className="w-12 h-0.5 bg-cyan-400 mb-3 rounded-full"></div>
+              <img src={content.portadaImage} alt="Definición del bien" className="w-full h-20 object-cover rounded-xl border border-white/10 mb-3 shadow-md" />
+              <p className="text-[9px] text-zinc-300 mb-2 leading-relaxed">{content.portadaSubtitle}</p>
+              <p className="text-[8px] text-zinc-400 border-t border-white/10 pt-2 mt-2 whitespace-pre-line text-left leading-relaxed">{content.portadaEdition}</p>
             </div>
-            <div className="text-[9px] text-zinc-500 font-mono border-t border-white/10 pt-2 mt-4">Portada / Cara Externa</div>
+            <div className="text-[8px] text-zinc-500 font-mono border-t border-white/10 pt-1 mt-2">Portada / Cara Externa</div>
           </div>
 
         </div>
