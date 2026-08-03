@@ -179,7 +179,7 @@ const DEFAULT_PANEL_ORDER: Record<string, string[]> = {
 };
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
   const [theme, setTheme] = useState<Theme>("cyber");
   const [isEditing, setIsEditing] = useState(false);
@@ -1520,25 +1520,8 @@ export default function Home() {
 
             {/* Action Buttons */}
             <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
-                isOpen 
-                  ? "bg-white/10 text-foreground border border-white/10" 
-                  : `bg-gradient-to-r ${getGradient("primary")} text-white shadow-lg shadow-black/10 hover:brightness-110 hover:scale-[1.02]`
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>{isOpen ? "Cerrar" : "Abrir Tríptico"}</span>
-            </button>
-
-            <button 
               onClick={() => setIsFlipped(!isFlipped)}
-              disabled={!isOpen}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 border mr-1 ${
-                !isOpen 
-                  ? "opacity-40 cursor-not-allowed border-transparent text-foreground/40" 
-                  : "border-white/10 hover:bg-white/10 text-foreground cursor-pointer"
-              }`}
+              className="flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 border mr-1 border-white/10 hover:bg-white/10 text-foreground cursor-pointer"
             >
               <RotateCw className="w-4 h-4" />
               <span>{isFlipped ? "Ver Interior" : "Girar Tríptico"}</span>
@@ -1577,11 +1560,9 @@ export default function Home() {
             <p className="text-sm font-medium text-foreground/70">
               {isEditing 
                 ? "Modo de edición ACTIVO. Ajusta tamaños, mueve bloques y carga tus imágenes."
-                : !isOpen 
-                  ? "Haz clic en \"Abrir Tríptico\" o en la portada para desplegar el folleto."
-                  : isFlipped 
-                    ? "Estás viendo la cara EXTERIOR (Portada, Contraportada y Solapa)." 
-                    : "Estás viendo la cara INTERIOR (Páginas de contenido)."}
+                : isFlipped 
+                  ? "Estás viendo la cara EXTERIOR (Portada, Contraportada y Solapa)." 
+                  : "Estás viendo la cara INTERIOR (Páginas de contenido)."}
             </p>
           </div>
 
@@ -1680,10 +1661,7 @@ export default function Home() {
 
                   {/* Outside Portada (Cara Exterior - Portada Principal: Definición del bien a producir) */}
                   <div 
-                    className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative cursor-pointer transition-opacity duration-500 ${!isOpen || (isOpen && isFlipped) ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-                    onClick={() => {
-                      if (!isOpen && !isEditing) setIsOpen(true);
-                    }}
+                    className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative transition-opacity duration-500 ${!isOpen || (isOpen && isFlipped) ? "opacity-100" : "opacity-0 pointer-events-none"}`}
                   >
                     {/* Decorative glowing gradient circle on cover */}
                     <div className={`absolute -top-12 -right-12 w-40 h-40 rounded-full bg-gradient-to-br ${getGradient("primary")} opacity-30 blur-2xl pointer-events-none`}></div>
@@ -1691,12 +1669,6 @@ export default function Home() {
                     <div className="flex flex-col h-full justify-between z-10">
                       {renderPanelContent("portada")}
                       <div className="flex flex-col gap-2 mt-4">
-                        {!isOpen && (
-                          <div className={`animate-pulse inline-flex items-center gap-1 text-xs font-semibold bg-white/10 border border-white/10 text-white rounded-xl py-2 px-3 justify-center`}>
-                            <span>Haz clic para abrir</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
-                          </div>
-                        )}
                         <div className="text-[10px] text-foreground/40 font-mono flex justify-between items-center">
                           <span>PORTADA PRINCIPAL</span>
                           <span>Cara Externa</span>
