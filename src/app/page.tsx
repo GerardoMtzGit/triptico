@@ -1246,6 +1246,139 @@ export default function Home() {
     return gradients[theme][type];
   };
 
+  const renderPortfolioView = () => {
+    return (
+      <div className="w-full max-w-6xl mx-auto flex-1 flex flex-col justify-start py-8 px-4 z-10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+              Mi Portafolio de Trípticos
+            </h2>
+            <p className="text-sm text-foreground/50 mt-1">Administra, edita, clona y organiza todos tus trípticos académicos.</p>
+          </div>
+          
+          <button
+            onClick={handleCreateNewProject}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r ${getGradient("primary")} text-white shadow-lg hover:brightness-110 hover:scale-[1.02] transition cursor-pointer`}
+          >
+            <Plus className="w-4 h-4" />
+            <span>Crear Nuevo Tríptico</span>
+          </button>
+        </div>
+
+        {projects.length === 0 ? (
+          <div className="flex-1 flex flex-col items-center justify-center p-12 glass-panel rounded-3xl border border-white/10 text-center my-8">
+            <Layers className="w-16 h-16 text-foreground/20 mb-4 animate-bounce" />
+            <h3 className="text-xl font-bold mb-2">No tienes trípticos en tu portafolio</h3>
+            <p className="text-sm text-foreground/50 max-w-sm mb-6">Comienza creando tu primer tríptico interactivo en unos pocos clics.</p>
+            <button
+              onClick={handleCreateNewProject}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r ${getGradient("primary")} text-white cursor-pointer`}
+            >
+              <Plus className="w-4 h-4" />
+              <span>Crear Mi Primer Tríptico</span>
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((proj) => {
+              const isActive = proj.id === currentProjectId;
+              
+              return (
+                <div 
+                  key={proj.id}
+                  className={`glass-panel rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 relative border ${
+                    isActive 
+                      ? "border-cyan-500/50 shadow-lg shadow-cyan-500/5 bg-cyan-500/[0.02]" 
+                      : "border-white/10 hover:border-white/20 hover:bg-white/[0.02]"
+                  }`}
+                >
+                  {isActive && (
+                    <span className="absolute top-4 right-4 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                      Activo
+                    </span>
+                  )}
+
+                  <div>
+                    <div className="mb-2 pr-12">
+                      <input
+                        type="text"
+                        value={proj.name}
+                        onChange={(e) => handleRenameProject(proj.id, e.target.value)}
+                        className="bg-transparent text-lg font-bold text-foreground border-b border-transparent hover:border-white/20 focus:border-cyan-400 focus:outline-none w-full py-0.5 transition duration-150 font-sans"
+                        title="Haz clic para renombrar"
+                      />
+                    </div>
+                    
+                    <div className="flex items-center gap-2 text-xs text-foreground/40 mb-4 font-mono">
+                      <span>Creado: {proj.createdAt}</span>
+                      <span>•</span>
+                      <span className="capitalize">{proj.theme}</span>
+                    </div>
+
+                    <div className="space-y-1.5 p-3 rounded-2xl bg-white/5 border border-white/5 mb-6 text-xs text-foreground/60 font-medium">
+                      <div className="font-semibold text-[10px] uppercase text-foreground/40 tracking-wider mb-1 font-mono">Secciones</div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        <span className="truncate">{proj.content.portadaTitle || "Portada"}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                        <span className="truncate">{proj.content.solapaTitle || "Consumidor"}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                        <span className="truncate">{proj.content.insideLeftTitle || "Competencia"}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        <span className="truncate">{proj.content.insideCenterTitle || "Demanda"}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-4 border-t border-white/5">
+                    {!isActive ? (
+                      <button
+                        onClick={() => handleLoadProject(proj.id)}
+                        className="flex-1 text-center py-2 rounded-xl text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition cursor-pointer"
+                      >
+                        Cargar
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => setActiveTab("editor")}
+                        className="flex-1 text-center py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/30 transition cursor-pointer"
+                      >
+                        Editar
+                      </button>
+                    )}
+                    
+                    <button
+                      onClick={() => handleCloneProject(proj.id)}
+                      className="p-2 rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/5 text-foreground/70 hover:text-foreground transition cursor-pointer"
+                      title="Clonar Tríptico"
+                    >
+                      <Layers className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => handleDeleteProject(proj.id)}
+                      className="p-2 rounded-xl border border-red-500/10 hover:border-red-500/20 bg-red-500/5 hover:bg-red-500/10 text-red-400 hover:text-red-300 transition cursor-pointer"
+                      title="Eliminar Tríptico"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className={`min-h-screen w-full flex flex-col justify-between overflow-x-hidden bg-gradient-to-b ${getGradient("bg")} ${getThemeClass()} p-4 md:p-8 font-sans transition-all duration-1000 relative`}>
       
@@ -1435,235 +1568,241 @@ export default function Home() {
         )}
       </header>
 
-      {/* Main View Area */}
-      <main className="flex-1 w-full flex flex-col items-center justify-center py-4 z-10 print:hidden">
-        
-        {/* Helper Instructions Banner */}
-        <div className="mb-6 text-center max-w-md">
-          <p className="text-sm font-medium text-foreground/70">
-            {isEditing 
-              ? "Modo de edición ACTIVO. Pasa el mouse sobre los textos para ajustar su tamaño. Usa '+ Imagen' para arrastrar/soltar tus imágenes."
-              : !isOpen 
-                ? "Haz clic en \"Abrir Tríptico\" o en la portada para desplegar el folleto."
-                : isFlipped 
-                  ? "Estás viendo la cara EXTERIOR (Portada, Contraportada y Solapa)." 
-                  : "Estás viendo la cara INTERIOR (Páginas de contenido)."}
-          </p>
-        </div>
+      {/* Main View Area / Portafolio Switch */}
+      {activeTab === "editor" ? (
+        <main className="flex-1 w-full flex flex-col items-center justify-center py-4 z-10 print:hidden">
+          
+          {/* Helper Instructions Banner */}
+          <div className="mb-6 text-center max-w-md">
+            <p className="text-sm font-medium text-foreground/70">
+              {isEditing 
+                ? "Modo de edición ACTIVO. Ajusta tamaños, mueve bloques y carga tus imágenes."
+                : !isOpen 
+                  ? "Haz clic en \"Abrir Tríptico\" o en la portada para desplegar el folleto."
+                  : isFlipped 
+                    ? "Estás viendo la cara EXTERIOR (Portada, Contraportada y Solapa)." 
+                    : "Estás viendo la cara INTERIOR (Páginas de contenido)."}
+            </p>
+          </div>
 
-        {/* DESKTOP 3D BROCHURE VIEW (Perspective and rotateX are set to 0 when editing to enable perfect contentEditable focus) */}
-        <div 
-          className="hidden lg:block w-full max-w-[90vw] brochure-viewport relative transition-all duration-150"
-          style={{ 
-            height: `${height}px`,
-            perspective: isEditing ? "none" : "2500px"
-          }}
-        >
+          {/* DESKTOP 3D BROCHURE VIEW (Perspective and rotateX are set to 0 when editing to enable perfect contentEditable focus) */}
           <div 
-            className={`w-full h-full brochure-wrapper duration-1000 ${isOpen ? "" : "folded"} ${isEditing ? "editing-active" : ""}`}
-            style={{
-              transform: `scale(${scale}) rotateX(${isEditing ? 0 : 15}deg) ${isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"}`,
-              transformOrigin: "center center"
+            className="hidden lg:block w-full max-w-[90vw] brochure-viewport relative transition-all duration-150"
+            style={{ 
+              height: `${height}px`,
+              perspective: isEditing ? "none" : "2500px"
             }}
           >
-            {/* 3D BROCHURE GRID */}
-            <div className="w-full h-full grid grid-cols-3 relative" style={{ transformStyle: "preserve-3d" }}>
-              
-              {/* PANEL 1: LEFT PANEL (Inside Left [Pág 1] / Outside Solapa) */}
-              <div 
-                className={`panel-container panel-left-fold w-full h-full absolute top-0 left-0`}
-                style={{
-                  width: "33.333333%",
-                  transform: isOpen ? "rotateY(0deg)" : "rotateY(140deg)",
-                  zIndex: isOpen ? 10 : 30
-                }}
-              >
-                {/* Inside Left (Página 1: Análisis de la competencia) */}
-                <div className={`panel-side-front w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  {renderPanelContent("insideLeft")}
-                  <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5">
-                    Pág 1 / Cara Interna
+            <div 
+              className={`w-full h-full brochure-wrapper duration-1000 ${isOpen ? "" : "folded"} ${isEditing ? "editing-active" : ""}`}
+              style={{
+                transform: `scale(${scale}) rotateX(${isEditing ? 0 : 15}deg) ${isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"}`,
+                transformOrigin: "center center"
+              }}
+            >
+              {/* 3D BROCHURE GRID */}
+              <div className="w-full h-full grid grid-cols-3 relative" style={{ transformStyle: "preserve-3d" }}>
+                
+                {/* PANEL 1: LEFT PANEL (Inside Left [Pág 1] / Outside Solapa) */}
+                <div 
+                  className={`panel-container panel-left-fold w-full h-full absolute top-0 left-0`}
+                  style={{
+                    width: "33.333333%",
+                    transform: isOpen ? "rotateY(0deg)" : "rotateY(140deg)",
+                    zIndex: isOpen ? 10 : 30
+                  }}
+                >
+                  {/* Inside Left (Página 1: Análisis de la competencia) */}
+                  <div className={`panel-side-front w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    {renderPanelContent("insideLeft")}
+                    <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5">
+                      Pág 1 / Cara Interna
+                    </div>
                   </div>
+
+                  {/* Outside Solapa (Cara Exterior - Solapa Interna: Análisis del consumidor) */}
+                  <div className={`panel-side-back w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto bg-black/40 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    <div className="flex flex-col h-full justify-between">
+                      {renderPanelContent("solapa")}
+                      <div className="text-xs text-foreground/40 font-mono mt-8 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <span>Solapa Interna</span>
+                        <span>Cara Externa</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Simulated page fold shadow */}
+                  <div className="fold-shadow-left"></div>
                 </div>
 
-                {/* Outside Solapa (Cara Exterior - Solapa Interna: Análisis del consumidor) */}
-                <div className={`panel-side-back w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto bg-black/40 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  <div className="flex flex-col h-full justify-between">
-                    {renderPanelContent("solapa")}
-                    <div className="text-xs text-foreground/40 font-mono mt-8 pt-4 border-t border-white/5 flex justify-between items-center">
-                      <span>Solapa Interna</span>
+                {/* PANEL 2: CENTER PANEL (Inside Center [Pág 2] / Outside Contraportada) */}
+                <div 
+                  className="panel-container w-full h-full absolute top-0 left-[33.333333%]"
+                  style={{
+                    width: "33.333333%",
+                    zIndex: 20
+                  }}
+                >
+                  {/* Inside Center (Página 2: Previsión de la demanda) */}
+                  <div className={`panel-side-front w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    {renderPanelContent("insideCenter")}
+                    <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5">
+                      Pág 2 / Cara Interna
+                    </div>
+                  </div>
+
+                  {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES UVM & APA REFERENCES) */}
+                  <div className={`panel-side-back w-full h-full glass-panel p-6 flex flex-col justify-between overflow-y-auto bg-black/25 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    {renderPanelContent("contra")}
+                    <div className="text-xs text-foreground/40 font-mono mt-4 pt-2 border-t border-white/5 flex justify-between">
+                      <span>Contraportada</span>
                       <span>Cara Externa</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Simulated page fold shadow */}
-                <div className="fold-shadow-left"></div>
-              </div>
-
-              {/* PANEL 2: CENTER PANEL (Inside Center [Pág 2] / Outside Contraportada) */}
-              <div 
-                className="panel-container w-full h-full absolute top-0 left-[33.333333%]"
-                style={{
-                  width: "33.333333%",
-                  zIndex: 20
-                }}
-              >
-                {/* Inside Center (Página 2: Previsión de la demanda) */}
-                <div className={`panel-side-front w-full h-full glass-panel p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  {renderPanelContent("insideCenter")}
-                  <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5">
-                    Pág 2 / Cara Interna
-                  </div>
-                </div>
-
-                {/* Outside Contraportada (Cara Exterior - Centro / Parte de atrás - CREDENCIALES UVM & APA REFERENCES) */}
-                <div className={`panel-side-back w-full h-full glass-panel p-6 flex flex-col justify-between overflow-y-auto bg-black/25 transition-opacity duration-500 ${isOpen && isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  {renderPanelContent("contra")}
-                  <div className="text-xs text-foreground/40 font-mono mt-4 pt-2 border-t border-white/5 flex justify-between">
-                    <span>Contraportada</span>
-                    <span>Cara Externa</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* PANEL 3: RIGHT PANEL (Inside Right [Pág 3] / Outside Portada) */}
-              <div 
-                className={`panel-container panel-right-fold w-full h-full absolute top-0 left-[66.666666%]`}
-                style={{
-                  width: "33.333333%",
-                  transform: isOpen ? "rotateY(0deg)" : "rotateY(-140deg)",
-                  zIndex: isOpen ? 10 : 35
-                }}
-              >
-                {/* Inside Right (Página 3: El plan de comercialización) */}
-                <div className={`panel-side-front w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  {renderPanelContent("insideRight")}
-                  <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5">
-                    Pág 3 / Cara Interna
-                  </div>
-                </div>
-
-                {/* Outside Portada (Cara Exterior - Portada Principal: Definición del bien a producir) */}
+                {/* PANEL 3: RIGHT PANEL (Inside Right [Pág 3] / Outside Portada) */}
                 <div 
-                  className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative cursor-pointer transition-opacity duration-500 ${!isOpen || (isOpen && isFlipped) ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-                  onClick={() => {
-                    if (!isOpen && !isEditing) setIsOpen(true);
+                  className={`panel-container panel-right-fold w-full h-full absolute top-0 left-[66.666666%]`}
+                  style={{
+                    width: "33.333333%",
+                    transform: isOpen ? "rotateY(0deg)" : "rotateY(-140deg)",
+                    zIndex: isOpen ? 10 : 35
                   }}
                 >
-                  {/* Decorative glowing gradient circle on cover */}
-                  <div className={`absolute -top-12 -right-12 w-40 h-40 rounded-full bg-gradient-to-br ${getGradient("primary")} opacity-30 blur-2xl pointer-events-none`}></div>
+                  {/* Inside Right (Página 3: El plan de comercialización) */}
+                  <div className={`panel-side-front w-full h-full glass-panel rounded-r-2xl p-8 flex flex-col justify-between overflow-y-auto transition-opacity duration-500 ${isOpen && !isFlipped ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    {renderPanelContent("insideRight")}
+                    <div className="text-xs text-foreground/40 font-mono mt-4 pt-4 border-t border-white/5">
+                      Pág 3 / Cara Interna
+                    </div>
+                  </div>
 
-                  <div className="flex flex-col h-full justify-between z-10">
-                    {renderPanelContent("portada")}
-                    <div className="flex flex-col gap-2 mt-4">
-                      {!isOpen && (
-                        <div className={`animate-pulse inline-flex items-center gap-1 text-xs font-semibold bg-white/10 border border-white/10 text-white rounded-xl py-2 px-3 justify-center`}>
-                          <span>Haz clic para abrir</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                  {/* Outside Portada (Cara Exterior - Portada Principal: Definición del bien a producir) */}
+                  <div 
+                    className={`panel-side-back w-full h-full glass-panel rounded-l-2xl p-8 flex flex-col justify-between overflow-y-auto relative cursor-pointer transition-opacity duration-500 ${!isOpen || (isOpen && isFlipped) ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                    onClick={() => {
+                      if (!isOpen && !isEditing) setIsOpen(true);
+                    }}
+                  >
+                    {/* Decorative glowing gradient circle on cover */}
+                    <div className={`absolute -top-12 -right-12 w-40 h-40 rounded-full bg-gradient-to-br ${getGradient("primary")} opacity-30 blur-2xl pointer-events-none`}></div>
+
+                    <div className="flex flex-col h-full justify-between z-10">
+                      {renderPanelContent("portada")}
+                      <div className="flex flex-col gap-2 mt-4">
+                        {!isOpen && (
+                          <div className={`animate-pulse inline-flex items-center gap-1 text-xs font-semibold bg-white/10 border border-white/10 text-white rounded-xl py-2 px-3 justify-center`}>
+                            <span>Haz clic para abrir</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </div>
+                        )}
+                        <div className="text-[10px] text-foreground/40 font-mono flex justify-between items-center">
+                          <span>PORTADA PRINCIPAL</span>
+                          <span>Cara Externa</span>
                         </div>
-                      )}
-                      <div className="text-[10px] text-foreground/40 font-mono flex justify-between items-center">
-                        <span>PORTADA PRINCIPAL</span>
-                        <span>Cara Externa</span>
                       </div>
                     </div>
                   </div>
+
+                  {/* Simulated page fold shadow */}
+                  <div className="fold-shadow-right"></div>
                 </div>
 
-                {/* Simulated page fold shadow */}
-                <div className="fold-shadow-right"></div>
               </div>
-
             </div>
           </div>
-        </div>
 
-        {/* Drag handle to resize height (visible on desktop) */}
-        <div 
-          onMouseDown={startResize}
-          className={`hidden lg:flex w-full max-w-[90vw] h-7 items-center justify-center cursor-ns-resize group/handle mt-3 relative select-none z-20 ${
-            isResizing ? "bg-cyan-500/10 rounded-lg border border-cyan-500/20" : ""
-          }`}
-          title="Arrastra hacia abajo para ajustar la altura del tríptico"
-        >
-          {/* Grab indicator line */}
-          <div className="w-1/3 h-1 bg-white/10 dark:bg-white/5 rounded-full group-hover/handle:bg-cyan-500/50 transition duration-300 relative flex items-center justify-center">
-            <div className="absolute px-2.5 py-0.5 rounded-lg bg-zinc-950 border border-white/10 text-[9px] font-mono text-cyan-400 opacity-0 group-hover/handle:opacity-100 transition-opacity duration-300 pointer-events-none -top-6">
-              Altura actual: {height}px (Arrastra para cambiar)
-            </div>
-            {/* Horizontal dots indicator */}
-            <div className="flex gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 group-hover/handle:bg-cyan-400"></div>
-              <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 group-hover/handle:bg-cyan-400"></div>
-              <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 group-hover/handle:bg-cyan-400"></div>
-            </div>
-          </div>
-        </div>
-
-
-        {/* MOBILE RESPONSIVE TABS VIEW */}
-        <div className="block lg:hidden w-full max-w-md mx-auto z-10 px-2">
-          {/* Tab Selection */}
-          <div className="flex bg-white/5 border border-white/10 rounded-xl p-1 mb-4">
-            <button 
-              onClick={() => setIsFlipped(false)} 
-              className={`flex-1 py-2 text-xs font-semibold rounded-lg transition ${!isFlipped ? "bg-white text-black" : "text-foreground/75"}`}
-            >
-              Interior (Contenido)
-            </button>
-            <button 
-              onClick={() => setIsFlipped(true)} 
-              className={`flex-1 py-2 text-xs font-semibold rounded-lg transition ${isFlipped ? "bg-white text-black" : "text-foreground/75"}`}
-            >
-              Exterior (Portada/Info)
-            </button>
-          </div>
-
-          {/* Carousel Panels */}
-          <div className="space-y-4">
-            {!isFlipped ? (
-              // Inside pages
-              <div className="grid grid-cols-1 gap-4">
-                {/* Panel 1 */}
-                <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
-                  {renderPanelContent("insideLeft")}
-                </div>
-
-                {/* Panel 2 */}
-                <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
-                  {renderPanelContent("insideCenter")}
-                </div>
-
-                {/* Panel 3 */}
-                <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
-                  {renderPanelContent("insideRight")}
-                </div>
+          {/* Drag handle to resize height (visible on desktop) */}
+          <div 
+            onMouseDown={startResize}
+            className={`hidden lg:flex w-full max-w-[90vw] h-7 items-center justify-center cursor-ns-resize group/handle mt-3 relative select-none z-20 ${
+              isResizing ? "bg-cyan-500/10 rounded-lg border border-cyan-500/20" : ""
+            }`}
+            title="Arrastra hacia abajo para ajustar la altura del tríptico"
+          >
+            {/* Grab indicator line */}
+            <div className="w-1/3 h-1 bg-white/10 dark:bg-white/5 rounded-full group-hover/handle:bg-cyan-500/50 transition duration-300 relative flex items-center justify-center">
+              <div className="absolute px-2.5 py-0.5 rounded-lg bg-zinc-950 border border-white/10 text-[9px] font-mono text-cyan-400 opacity-0 group-hover/handle:opacity-100 transition-opacity duration-300 pointer-events-none -top-6">
+                Altura actual: {height}px (Arrastra para cambiar)
               </div>
-            ) : (
-              // Outside pages
-              <div className="grid grid-cols-1 gap-4">
-                {/* Portada */}
-                <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[320px] relative overflow-hidden">
-                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${getGradient("primary")} opacity-30 blur-2xl pointer-events-none`}></div>
-                  {renderPanelContent("portada")}
-                </div>
-
-                {/* Contraportada (Hoja de enmedio) */}
-                <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
-                  {renderPanelContent("contra")}
-                </div>
-
-                {/* Solapa */}
-                <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
-                  {renderPanelContent("solapa")}
-                </div>
+              {/* Horizontal dots indicator */}
+              <div className="flex gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 group-hover/handle:bg-cyan-400"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 group-hover/handle:bg-cyan-400"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 group-hover/handle:bg-cyan-400"></div>
               </div>
-            )}
+            </div>
           </div>
-        </div>
 
-      </main>
+
+          {/* MOBILE RESPONSIVE TABS VIEW */}
+          <div className="block lg:hidden w-full max-w-md mx-auto z-10 px-2">
+            {/* Tab Selection */}
+            <div className="flex bg-white/5 border border-white/10 rounded-xl p-1 mb-4">
+              <button 
+                onClick={() => setIsFlipped(false)} 
+                className={`flex-1 py-2 text-xs font-semibold rounded-lg transition ${!isFlipped ? "bg-white text-black" : "text-foreground/75"}`}
+              >
+                Interior (Contenido)
+              </button>
+              <button 
+                onClick={() => setIsFlipped(true)} 
+                className={`flex-1 py-2 text-xs font-semibold rounded-lg transition ${isFlipped ? "bg-white text-black" : "text-foreground/75"}`}
+              >
+                Exterior (Portada/Info)
+              </button>
+            </div>
+
+            {/* Carousel Panels */}
+            <div className="space-y-4">
+              {!isFlipped ? (
+                // Inside pages
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Panel 1 */}
+                  <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
+                    {renderPanelContent("insideLeft")}
+                  </div>
+
+                  {/* Panel 2 */}
+                  <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
+                    {renderPanelContent("insideCenter")}
+                  </div>
+
+                  {/* Panel 3 */}
+                  <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
+                    {renderPanelContent("insideRight")}
+                  </div>
+                </div>
+              ) : (
+                // Outside pages
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Portada */}
+                  <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[320px] relative overflow-hidden">
+                    <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${getGradient("primary")} opacity-30 blur-2xl pointer-events-none`}></div>
+                    {renderPanelContent("portada")}
+                  </div>
+
+                  {/* Contraportada (Hoja de enmedio) */}
+                  <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
+                    {renderPanelContent("contra")}
+                  </div>
+
+                  {/* Solapa */}
+                  <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between min-h-[300px]">
+                    {renderPanelContent("solapa")}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+        </main>
+      ) : (
+        <div className="print:hidden flex-1 w-full flex flex-col justify-start">
+          {renderPortfolioView()}
+        </div>
+      )}
 
       {/* PRINT-ONLY AREA */}
       <div className="print-only-container hidden print:block w-full text-zinc-100 bg-[#09090b] font-sans p-0 m-0">
@@ -1713,6 +1852,14 @@ export default function Home() {
 
         </div>
       </div>
+
+      {/* Notification Toast */}
+      {showSaveToast && (
+        <div className="fixed bottom-6 right-6 flex items-center gap-2 bg-emerald-600/90 border border-emerald-500/40 text-white px-4 py-3 rounded-2xl shadow-2xl backdrop-blur z-50 animate-bounce">
+          <CheckCircle2 className="w-5 h-5" />
+          <span className="text-sm font-semibold">¡Cambios guardados con éxito!</span>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-6 border-t border-white/5 text-xs text-foreground/40 z-10 print:hidden">
