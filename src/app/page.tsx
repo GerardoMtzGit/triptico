@@ -21,7 +21,9 @@ import {
   Plus,
   Trash2,
   Image as ImageIcon,
-  GraduationCap
+  GraduationCap,
+  ArrowUp,
+  ArrowDown
 } from "lucide-react";
 
 type Theme = "cyber" | "emerald" | "sunset" | "light";
