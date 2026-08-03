@@ -88,6 +88,7 @@ interface TripticoProject {
   panelOrder: Record<string, string[]>;
   theme: Theme;
   fontSizes: Record<string, number>;
+  imageHeights?: Record<string, number>;
 }
 
 const DEFAULT_CONTENT: BrochureContent = {
@@ -196,6 +197,7 @@ export default function Home() {
 
   const [content, setContent] = useState<BrochureContent>(DEFAULT_CONTENT);
   const [fontSizes, setFontSizes] = useState<Record<string, number>>({});
+  const [imageHeights, setImageHeights] = useState<Record<string, number>>({});
   const [customBlocks, setCustomBlocks] = useState<Record<string, CustomBlock[]>>(DEFAULT_CUSTOM_BLOCKS);
   const [panelOrder, setPanelOrder] = useState<Record<string, string[]>>(DEFAULT_PANEL_ORDER);
 
@@ -222,7 +224,8 @@ export default function Home() {
         customBlocks: DEFAULT_CUSTOM_BLOCKS,
         panelOrder: DEFAULT_PANEL_ORDER,
         theme: "cyber",
-        fontSizes: {}
+        fontSizes: {},
+        imageHeights: {}
       };
       parsedProjects = [defaultProj];
       localStorage.setItem("triptico_projects", JSON.stringify(parsedProjects));
@@ -243,6 +246,7 @@ export default function Home() {
     setPanelOrder(activeProj.panelOrder);
     setTheme(activeProj.theme);
     setFontSizes(activeProj.fontSizes || {});
+    setImageHeights(activeProj.imageHeights || {});
     setIsLoaded(true);
   }, []);
 
@@ -258,7 +262,8 @@ export default function Home() {
             customBlocks,
             panelOrder,
             theme,
-            fontSizes
+            fontSizes,
+            imageHeights
           };
         }
         return p;
@@ -277,7 +282,7 @@ export default function Home() {
   React.useEffect(() => {
     if (!isLoaded || !currentProjectId) return;
     saveCurrentProject(true);
-  }, [content, customBlocks, panelOrder, theme, fontSizes, isLoaded, currentProjectId]);
+  }, [content, customBlocks, panelOrder, theme, fontSizes, imageHeights, isLoaded, currentProjectId]);
 
   const handleCreateNewProject = () => {
     const defaultName = `Nuevo Tríptico UVM - ${new Date().toLocaleDateString("es-MX", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}`;
@@ -290,7 +295,8 @@ export default function Home() {
       customBlocks: DEFAULT_CUSTOM_BLOCKS,
       panelOrder: DEFAULT_PANEL_ORDER,
       theme: "cyber",
-      fontSizes: {}
+      fontSizes: {},
+      imageHeights: {}
     };
 
     setProjects(prev => {
@@ -307,6 +313,7 @@ export default function Home() {
     setPanelOrder(DEFAULT_PANEL_ORDER);
     setTheme("cyber");
     setFontSizes({});
+    setImageHeights({});
 
     setActiveTab("editor");
   };
@@ -323,6 +330,7 @@ export default function Home() {
     setPanelOrder(proj.panelOrder);
     setTheme(proj.theme);
     setFontSizes(proj.fontSizes || {});
+    setImageHeights(proj.imageHeights || {});
 
     setActiveTab("editor");
   };
@@ -372,6 +380,7 @@ export default function Home() {
           setPanelOrder(nextActive.panelOrder);
           setTheme(nextActive.theme);
           setFontSizes(nextActive.fontSizes || {});
+          setImageHeights(nextActive.imageHeights || {});
         } else {
           setCurrentProjectId("");
           localStorage.removeItem("triptico_current_project_id");
@@ -381,6 +390,7 @@ export default function Home() {
           setPanelOrder(DEFAULT_PANEL_ORDER);
           setTheme("cyber");
           setFontSizes({});
+          setImageHeights({});
         }
       }
       return updated;
@@ -419,6 +429,17 @@ export default function Home() {
     setFontSizes(prev => ({
       ...prev,
       [key]: size
+    }));
+  };
+
+  const getImageHeight = (key: string, defaultHeight: number) => {
+    return imageHeights[key] || defaultHeight;
+  };
+
+  const updateImageHeight = (key: string, height: number) => {
+    setImageHeights(prev => ({
+      ...prev,
+      [key]: height
     }));
   };
 
@@ -574,7 +595,7 @@ export default function Home() {
     isRound?: boolean;
   }) => {
     const imageUrl = content[contentKey];
-    const [imageHeight, setImageHeight] = useState<number>(defaultHeight);
+    const imageHeight = getImageHeight(contentKey, defaultHeight);
 
     const handleUpload = (file: File) => {
       const reader = new FileReader();
@@ -610,7 +631,7 @@ export default function Home() {
                 min="60" 
                 max="350" 
                 value={imageHeight} 
-                onChange={(e) => setImageHeight(parseInt(e.target.value))}
+                onChange={(e) => updateImageHeight(contentKey, parseInt(e.target.value))}
                 className="w-14 h-1 bg-white/20 rounded cursor-pointer accent-cyan-400"
               />
               <span className="text-[9px] font-mono text-cyan-400">{imageHeight}px</span>
